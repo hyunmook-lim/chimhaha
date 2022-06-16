@@ -1,5 +1,4 @@
 package chimhaha.moooky.domain;
-
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -17,3 +16,4 @@ public class Profile {
 
     private String photoPath;
 }
+

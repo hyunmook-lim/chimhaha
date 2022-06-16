@@ -1,5 +1,6 @@
 package chimhaha.moooky.repository;
 
+
 import chimhaha.moooky.domain.Photo;
 
 public interface PhotoRepository {

@@ -8,3 +8,4 @@ public interface BoardRepository {
     Board findById(Long boardId);
 
 }
+

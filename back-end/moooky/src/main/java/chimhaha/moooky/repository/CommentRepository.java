@@ -1,5 +1,6 @@
 package chimhaha.moooky.repository;
 
+
 import chimhaha.moooky.domain.Comment;
 
 public interface CommentRepository {

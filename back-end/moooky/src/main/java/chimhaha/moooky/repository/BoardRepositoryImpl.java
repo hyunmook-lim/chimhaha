@@ -1,5 +1,6 @@
 package chimhaha.moooky.repository;
 
+
 import chimhaha.moooky.domain.Board;
 
 public class BoardRepositoryImpl implements BoardRepository{
