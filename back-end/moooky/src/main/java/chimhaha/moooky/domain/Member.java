@@ -16,6 +16,7 @@ public class Member {
     @Column(name = "MEMBER_ID")
     private Long id;
 
+    @Column(unique = true)
     private String nickname;
 
     private String password;
@@ -37,14 +38,7 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    //== 연관 관계 메서드 ==//
-    /**
-     * 게시글 추가
-     */
-//    public void addBoard(Board board) {
-//        boards.add(board);
-//        board.
-//    }
+    //== 연관관계 메서드 ==//
 
     //== 생성 메서드 ==//
     /**
@@ -58,6 +52,7 @@ public class Member {
         member.password = password;
         member.email = email;
         member.profile = profile;
+        //생일 날짜 받아오기
         member.birthday = birthday;
         member.gender = gender;
 
@@ -67,5 +62,31 @@ public class Member {
         return member;
     }
 
+    /**
+     * 객체 값 변경
+     */
+    public Long changeMemberData(String password, Profile profile, Date date, Gender gender) {
+        this.password = password;
+        this.profile = profile;
+        this.birthday = date;
+        this.gender = gender;
 
+        return this.id;
+    }
+
+    //== 비즈니스 메서드 ==//
+    /**
+     * 게시글 수 종합
+     */
+
+    public int totalBoards() {
+        return this.boards.size();
+    }
+    /**
+     * 댓글 수 종합
+     */
+
+    public int totalComments() {
+        return this.comments.size();
+    }
 }
