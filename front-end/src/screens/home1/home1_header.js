@@ -38,7 +38,7 @@ const TitleContainer = styled.div`
   position: relative;
   color: ${({ theme }) => theme.color.title};
   animation: ${moveTitle} 15s infinite linear;
-  margin: 30px 0px;
+  margin: 80px 0px;
 `;
 
 const Title = styled.div`
