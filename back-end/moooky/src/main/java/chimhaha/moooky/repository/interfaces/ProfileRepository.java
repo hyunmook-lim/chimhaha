@@ -1,4 +1,4 @@
-package chimhaha.moooky.repository;
+package chimhaha.moooky.repository.interfaces;
 
 import chimhaha.moooky.domain.Profile;
 

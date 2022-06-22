@@ -1,6 +1,7 @@
 package chimhaha.moooky.repository;
 
 import chimhaha.moooky.domain.Profile;
+import chimhaha.moooky.repository.interfaces.ProfileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +9,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor
-public class ProfileRepositoryImpl implements ProfileRepository{
+public class ProfileRepositoryImpl implements ProfileRepository {
 
     private final EntityManager em;
 

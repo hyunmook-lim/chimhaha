@@ -1,6 +1,7 @@
 package chimhaha.moooky.repository;
 
 import chimhaha.moooky.domain.Member;
+import chimhaha.moooky.repository.interfaces.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +9,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor
-public class MemberRepositoryImpl implements MemberRepository{
+public class MemberRepositoryImpl implements MemberRepository {
 
     private final EntityManager em;
 

@@ -1,6 +1,7 @@
 package chimhaha.moooky.repository;
 
 import chimhaha.moooky.domain.Photo;
+import chimhaha.moooky.repository.interfaces.PhotoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +9,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor
-public class PhotoRepositoryImpl implements PhotoRepository{
+public class PhotoRepositoryImpl implements PhotoRepository {
 
     private final EntityManager em;
 
