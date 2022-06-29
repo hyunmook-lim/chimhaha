@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import TopMenuBar from "./components/top_menu_bar";
-import useWindowDimensions from "../../components/getWindowDimensions";
+import useWindowDimensions from "../../utils/getWindowDimensions";
 
 const View = styled.div`
   display: flex;
@@ -47,6 +47,14 @@ const Title = styled.div`
   font-weight: 800;
   text-decoration: none;
   animation: ${spinTitle} 7s infinite linear;
+  // 텍스트 선택 안되게함
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 `;
 
 export default function Home1Header() {

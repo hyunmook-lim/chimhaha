@@ -26,12 +26,10 @@ const ContentWrap = styled.div`
 const Content = styled.div`
   background-color: ${({ theme }) => theme.color.background_content};
   height: 100px;
-  border-radius: 30px;
+  border-radius: 10px;
   margin: 20px 15px;
   @media (max-width: ${mobile_screen_size}px) {
     margin: 12px 5px;
-  }
-
   }
 `;
 
