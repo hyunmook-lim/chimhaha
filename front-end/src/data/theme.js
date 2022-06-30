@@ -11,6 +11,10 @@ const theme = {
     title: "gold",
     menu: "white",
   },
+  size: {
+    top_menu_bar: 12,
+    menu_bar: 20,
+  },
 };
 
 export default theme;

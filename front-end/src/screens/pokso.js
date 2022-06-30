@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { Home1Header, Home1Body, Home1Footer } from "./home1/";
+import { Home1Header } from "./home1/";
 import MenuBar from "./home1/components/menu_bar";
+import PoxoDrawer from "./pokso/pokso_drawer";
 
 const View = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  h1 {
+    position: absolute;
+    color: yellow;
+    font-size: 60px;
+    opacity: 0.4;
+  }
 `;
 
 const MenuBarWrap = styled.div`
@@ -22,15 +30,14 @@ const MenuBarWrap = styled.div`
   top: 0;
 `;
 
-export default function Home1() {
+export default function Pokso() {
   return (
     <View>
       <Home1Header />
       <MenuBarWrap>
-        <MenuBar home={true} />
+        <MenuBar pokso={true} />
       </MenuBarWrap>
-      <Home1Body />
-      <Home1Footer />
+      <PoxoDrawer />
     </View>
   );
 }

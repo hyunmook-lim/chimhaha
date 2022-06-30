@@ -12,41 +12,17 @@ const View = styled.div`
   background-color: ${({ theme }) => theme.color.background_header};
 `;
 
-const moveTitle = keyframes`
-  0% {
-    left: -10vw;
-  }
-  50% {
-    left: 10vw;
-  }
-
-  100% {
-    left: -10vw
-  }
-`;
-
-const spinTitle = keyframes`
-  from {
-  transform: rotate(0deg);
-  }
-  to {
-  transform: rotate(360deg);
-  }
-`;
-
 const TitleContainer = styled.div`
   position: relative;
   color: ${({ theme }) => theme.color.title};
-  animation: ${moveTitle} 15s infinite linear;
-  margin: 80px 0px;
+  margin: 20px 0px;
 `;
 
 const Title = styled.div`
   color: ${({ theme }) => theme.color.title};
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 800;
   text-decoration: none;
-  animation: ${spinTitle} 7s infinite linear;
   // 텍스트 선택 안되게함
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */

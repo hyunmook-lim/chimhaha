@@ -16,7 +16,7 @@ const ContentWrap = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-right: 50px;
+  margin-right: 5vw;
 `;
 
 const Text = styled.a`
@@ -24,7 +24,7 @@ const Text = styled.a`
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.size.top_menu_bar}px;
   color: white;
   text-decoration: none;
 `;
