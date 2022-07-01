@@ -26,7 +26,7 @@ const MenuButton = styled.div`
 `;
 
 const MenuText = styled(Link)`
-  display: felx;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -66,7 +66,10 @@ export default function MenuBar({ home, pokso }) {
         style={
           width < 360
             ? { display: "none" }
-            : { borderBottom: pokso ? "3px white solid" : "" }
+            : {
+                borderBottom: pokso ? "3px white solid" : "",
+                marginBottom: pokso ? 0 : 3,
+              }
         }
       >
         {/* 폭소게시판 이동 */}

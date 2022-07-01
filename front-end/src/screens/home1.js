@@ -18,8 +18,6 @@ const MenuBarWrap = styled.div`
   align-self: start;
   width: 100%;
   background-color: ${({ theme }) => theme.color.background_header};
-  position: sticky;
-  top: 0;
 `;
 
 export default function Home1() {

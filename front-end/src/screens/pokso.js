@@ -1,21 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { Home1Header } from "./home1/";
+import { Home1Footer, Home1Header } from "./home1/";
 import MenuBar from "./home1/components/menu_bar";
-import PoxoDrawer from "./pokso/pokso_drawer";
+import PoksoDrawer from "./pokso/pokso_drawer";
+
+const mobile_screen_size = 1200;
 
 const View = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-
-  h1 {
-    position: absolute;
-    color: yellow;
-    font-size: 60px;
-    opacity: 0.4;
-  }
 `;
 
 const MenuBarWrap = styled.div`
@@ -26,8 +22,35 @@ const MenuBarWrap = styled.div`
   align-self: start;
   width: 100%;
   background-color: ${({ theme }) => theme.color.background_header};
-  position: sticky;
-  top: 0;
+`;
+
+const PoksoBody = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  width: 1250px;
+  margin: 20px;
+
+  @media (max-width: ${mobile_screen_size}px) {
+    width: 98%;
+  }
+`;
+
+const ContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-conetent: start;
+  width: 100%;
+  border-left: grey solid 1px;
+  border-right: grey solid 1px;
+  margin: 8px;
+  padding: 5px;
+
+  h1 {
+    color: white;
+  }
 `;
 
 export default function Pokso() {
@@ -37,7 +60,59 @@ export default function Pokso() {
       <MenuBarWrap>
         <MenuBar pokso={true} />
       </MenuBarWrap>
-      <PoxoDrawer />
+      <PoksoBody>
+        <PoksoDrawer />
+        <ContentWrap>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+          <h1>text</h1>
+        </ContentWrap>
+      </PoksoBody>
+      <Home1Footer />
     </View>
   );
 }
