@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TopMenuBar from "./components/top_menu_bar";
-import useWindowDimensions from "../../utils/getWindowDimensions";
+import { Link } from "react-router-dom";
 
 const View = styled.div`
   display: flex;
@@ -10,17 +9,20 @@ const View = styled.div`
   justify-content: center;
   width: 100%;
   background-color: ${({ theme }) => theme.color.background_header};
+  padding: 50px 0px;
+  padding-bottom: 20px;
 `;
 
-const TitleContainer = styled.div`
-  position: relative;
-  color: ${({ theme }) => theme.color.title};
-  margin: 20px 0px;
+const TitleContainer = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Title = styled.div`
   color: ${({ theme }) => theme.color.title};
-  font-size: 50px;
+  font-size: 35px;
   font-weight: 800;
   text-decoration: none;
   // 텍스트 선택 안되게함
@@ -34,12 +36,11 @@ const Title = styled.div`
 `;
 
 export default function Home1Header() {
-  const width = useWindowDimensions().width;
   return (
     <View>
-      <TopMenuBar />
-      <TitleContainer>
-        <Title href="#">{width}</Title>
+      <TitleContainer to="/">
+        <Title>웃음의</Title>
+        <Title>알렉산드리아 도서관</Title>
       </TitleContainer>
     </View>
   );

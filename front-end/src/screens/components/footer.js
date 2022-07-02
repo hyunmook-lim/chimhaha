@@ -10,17 +10,17 @@ const View = styled.div`
   height: 400px;
 `;
 
-const Footer = styled.h1`
+const Container = styled.h1`
   position: absolute;
   opacity: 0.3;
   font-size: 80px;
   color: ${({ theme }) => theme.color.header_title};
 `;
 
-export default function Home1Footer() {
+export default function Footer() {
   return (
     <View>
-      <Footer>Footer</Footer>
+      <Container>Footer</Container>
     </View>
   );
 }

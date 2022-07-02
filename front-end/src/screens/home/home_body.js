@@ -33,7 +33,7 @@ const Content = styled.div`
   }
 `;
 
-export default function Home1Body() {
+export default function HomeBody() {
   return (
     <View>
       <ContentWrap>

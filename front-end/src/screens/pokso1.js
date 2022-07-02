@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Header, MenuBar, Footer } from "./components";
-import { PoksoDrawer } from "./pokso/";
+import PoksoDrawer from "./pokso/pokso_drawer";
 
 const mobile_screen_size = 1250;
 
@@ -43,15 +43,16 @@ const ContentWrap = styled.div`
   }
 `;
 
-export default function Pokso() {
+export default function Pokso1() {
   return (
     <View>
       <Header />
       <MenuBar pokso={true} />
       <PoksoBody>
         <PoksoDrawer />
+
         <ContentWrap>
-          <h1>폭소게시판</h1>
+          <h1>폭소게시판 1</h1>
           <h1>text</h1>
           <h1>text</h1>
           <h1>text</h1>

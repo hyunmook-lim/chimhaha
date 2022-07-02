@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
+import theme from "../../data/theme";
 
 const View = styled.div`
   display: flex;
@@ -9,13 +10,12 @@ const View = styled.div`
   align-items: center;
   width: 190px;
   margin: 50px 10px;
-  z-index: 3;
 `;
 
 const Divider = styled.div`
   display: flex;
   width: 100%;
-  height: 1px;
+  height: 1.5px;
   background-color: white;
   opacity: 0.3;
 `;
@@ -26,19 +26,25 @@ export default function PoksoDrawer() {
   return (
     <View>
       <List>
+        <Divider />
+
         {drawer_list1.map((text, index) => (
           <ListItem key={text} disablePadding style={{ padding: 1.5 }}>
-            <Link to="#" style={{ textDecoration: "none" }}>
+            <Link to={`/pokso/${index + 1}`} style={{ textDecoration: "none" }}>
               <ListItemButton
                 sx={{
                   borderRadius: 5,
                   "&:hover": {
                     backgroundColor: "gray",
+                    opacity: 0.8,
                   },
                 }}
               >
                 <ListItemText
-                  primaryTypographyProps={{ color: "white" }}
+                  primaryTypographyProps={{
+                    color: "white",
+                    fontSize: theme.size.drawer_text,
+                  }}
                   primary={text}
                 ></ListItemText>
               </ListItemButton>
@@ -48,7 +54,7 @@ export default function PoksoDrawer() {
         <Divider />
         {drawer_list2.map((text, index) => (
           <ListItem key={text} disablePadding style={{ padding: 1.5 }}>
-            <Link to="#" style={{ textDecoration: "none" }}>
+            <Link to={`/pokso/${index + 6}`} style={{ textDecoration: "none" }}>
               <ListItemButton
                 sx={{
                   borderRadius: 5,
@@ -58,13 +64,17 @@ export default function PoksoDrawer() {
                 }}
               >
                 <ListItemText
-                  primaryTypographyProps={{ color: "white" }}
+                  primaryTypographyProps={{
+                    color: "white",
+                    fontSize: theme.size.drawer_text,
+                  }}
                   primary={text}
                 ></ListItemText>
               </ListItemButton>
             </Link>
           </ListItem>
         ))}
+        <Divider />
       </List>
     </View>
   );
