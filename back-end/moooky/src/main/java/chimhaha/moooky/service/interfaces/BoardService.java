@@ -8,5 +8,4 @@ public interface BoardService {
 
     void findOneBoard(Long boardId);
 
-    void
 }
