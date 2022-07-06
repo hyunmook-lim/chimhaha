@@ -1,4 +1,56 @@
 package chimhaha.moooky.service;
 
-public class MemberServiceImpl {
+import chimhaha.moooky.domain.Member;
+import chimhaha.moooky.repository.MemberRepositoryImpl;
+import chimhaha.moooky.service.interfaces.MemberService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class MemberServiceImpl implements MemberService {
+    private final MemberRepositoryImpl memberRepository;
+
+    @Override
+    @Transactional
+    public void signIn(Member member) {
+
+        validateDuplicateMember(member);
+        memberRepository.save(member);
+
+    }
+
+    @Override
+    public Member findMemberById(Long memberId) {
+        return memberRepository.findById(memberId);
+    }
+
+    private void validateDuplicateMember(Member member) {
+        /*
+        조회하는 과정에서 최적화 필요
+        이메일과 닉네임의 중복 검사기 필요할 때
+        1. 이메일로 한번, 닉네임으로 한번 두번 조회하는 경우
+        2. 모든 멤버 객체를 가져와서 비교하는 경우
+         */
+        List<Member> findSameEmailMember = (List<Member>) memberRepository.findByEmail(member.getEmail());
+        List<Member> findSameNicknameMember = (List<Member>) memberRepository.findByNickname(member.getNickname());
+        if (!findSameEmailMember.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 이메일입니다.");
+        }
+        else if (!findSameNicknameMember.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 닉네임입니다.");
+        }
+
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteMember(Member member) {
+        memberRepository.delete(member);
+    }
 }

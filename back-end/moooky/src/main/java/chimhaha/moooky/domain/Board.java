@@ -94,6 +94,12 @@ public class Board {
         ++this.likes;
     }
     /**
+     * 좋아요 수 감소
+     */
+    public void cancelLikes() {
+        --this.likes;
+    }
+    /**
      * 단 수 변경
      */
     public void changeGrade(Grade grade) {

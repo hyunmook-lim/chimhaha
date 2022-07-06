@@ -1,6 +1,7 @@
 package chimhaha.moooky.service.interfaces;
 
 import chimhaha.moooky.domain.Board;
+import chimhaha.moooky.enums.Grade;
 
 public interface BoardService {
 
@@ -8,4 +9,7 @@ public interface BoardService {
 
     void findOneBoard(Long boardId);
 
+    void changeGrade(Long boardId, Grade grade);
+
+    void deleteBoard(Board board);
 }

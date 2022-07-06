@@ -12,5 +12,6 @@ public interface BoardRepository {
     List<Board> findAll();
     //검색어를 통한 쿼리 검색
 
+    void delete(Board board);
 }
 
