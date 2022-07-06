@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Home, Pokso, Pokso1, Pokso2, Pokso3 } from "./screens";
+import { Home, Pokso1, Pokso2, Pokso3 } from "./screens";
 import theme from "./data/theme";
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -18,7 +18,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/pokso/*" element={<Pokso />} />
+            <Route path="/pokso/*" element={<Pokso1 />} />
             <Route path="/pokso/1/*" element={<Pokso1 />} />
             <Route path="/pokso/2/*" element={<Pokso2 />} />
             <Route path="/pokso/3/*" element={<Pokso3 />} />

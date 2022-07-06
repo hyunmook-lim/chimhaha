@@ -86,7 +86,7 @@ export default function MenuBar({ home, pokso }) {
           }
         >
           {/* 폭소게시판 이동 */}
-          <MenuText to="/pokso">폭소게시판</MenuText>
+          <MenuText to="/pokso/1">폭소게시판</MenuText>
         </MenuButton>
         <MenuButton style={width < 440 ? { display: "none" } : {}}>
           {/* 메뉴1 이동 */}
