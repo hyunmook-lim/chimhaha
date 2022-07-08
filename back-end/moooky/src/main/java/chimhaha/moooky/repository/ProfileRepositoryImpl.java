@@ -22,4 +22,9 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     public Profile findById(Long profileId) {
         return em.find(Profile.class, profileId);
     }
+
+    @Override
+    public void delete(Profile profile) {
+        em.remove(profile);
+    }
 }

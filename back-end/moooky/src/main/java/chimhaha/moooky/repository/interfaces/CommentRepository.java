@@ -8,4 +8,5 @@ public interface CommentRepository {
 
     Comment findById(Long commentId);
 
+    void delete(Comment comment);
 }

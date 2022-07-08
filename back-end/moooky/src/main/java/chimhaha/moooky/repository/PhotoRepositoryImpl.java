@@ -23,4 +23,9 @@ public class PhotoRepositoryImpl implements PhotoRepository {
         return em.find(Photo.class, photoId);
     }
 
+    @Override
+    public void delete(Photo photo) {
+        em.remove(photo);
+    }
+
 }

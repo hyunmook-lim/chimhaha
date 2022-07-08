@@ -8,4 +8,8 @@ public interface MemberService {
     Member findMemberById(Long memberId);
 
     void deleteMember(Member member);
+
+    // 게시글에 좋아요를 누르거나 취소하는 메서드
+
+    void chooseLikeOnBoard(Member member, Long boardId);
 }

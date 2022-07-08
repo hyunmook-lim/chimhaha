@@ -21,4 +21,9 @@ public class CommentRepositoryImpl implements CommentRepository {
     public Comment findById(Long commentId) {
         return em.find(Comment.class, commentId);
     }
+
+    @Override
+    public void delete(Comment comment) {
+        em.remove(comment);
+    }
 }

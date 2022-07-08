@@ -6,4 +6,6 @@ public interface ProfileRepository {
     void save(Profile profile);
 
     Profile findById(Long profileId);
+
+    void delete(Profile profile);
 }
