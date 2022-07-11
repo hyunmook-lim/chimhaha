@@ -1,0 +1,23 @@
+import React from "react";
+import styled from "styled-components";
+
+const View = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-conetent: start;
+  width: 100%;
+  border-left: grey solid 1px;
+  border-right: grey solid 1px;
+  margin: 8px;
+  padding: 5px;
+
+  h1 {
+    color: white;
+    white-space: nowrap;
+  }
+`;
+
+export default function ContentContainer({ children }) {
+  return <View>{children}</View>;
+}

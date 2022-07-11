@@ -6,14 +6,23 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import useWindowDimensions from "../../utils/getWindowDimensions";
 import { Link } from "react-router-dom";
 
+const ViewContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: ${({ theme }) => theme.color.background_header};
+`;
+
 const View = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: end;
   justify-content: start;
   align-self: start;
-  width: 100%;
-  background-color: ${({ theme }) => theme.color.background_header};
+  width: 1150px;
 `;
 
 const Container = styled.div`
@@ -22,7 +31,6 @@ const Container = styled.div`
   justify-content: start;
   align-items: end;
   padding: 0px 0px;
-  margin-left: 4vw;
 `;
 
 const MenuButton = styled.div`
@@ -65,92 +73,94 @@ export default function MenuBar({ home, pokso }) {
   const width = useWindowDimensions().width;
 
   return (
-    <View>
-      <Container>
-        {/* {홈 이동 } */}
-        <MenuButton
-          style={
-            home ? { borderBottom: "3px white solid", marginBottom: 0 } : {}
-          }
-        >
-          <MenuText to="/">Home</MenuText>
-        </MenuButton>
-        <MenuButton
-          style={
-            width < 360
-              ? { display: "none" }
-              : {
-                  borderBottom: pokso ? "3px white solid" : "",
-                  marginBottom: pokso ? 0 : 3,
-                }
-          }
-        >
-          {/* 폭소게시판 이동 */}
-          <MenuText to="/pokso/1">폭소게시판</MenuText>
-        </MenuButton>
-        <MenuButton style={width < 440 ? { display: "none" } : {}}>
-          {/* 메뉴1 이동 */}
-          <MenuText to="#">메뉴1</MenuText>
-        </MenuButton>
-        <MenuButton style={width < 440 ? { display: "none" } : {}}>
-          {/* 메뉴2 이동 */}
-          <MenuText to="#">메뉴2</MenuText>
-        </MenuButton>
-        {/* width 줄어들시 더보기 메뉴 바 생성 */}
-        <MenuButton style={{ marginRight: 0 }}>
-          <PopupState variant="popover" popupId="demo-popup-menu">
-            {(popupState) => (
-              <div style={width >= 440 ? { display: "none" } : {}}>
-                <MenuText
-                  to="#"
-                  style={{ width: 70 }}
-                  {...bindTrigger(popupState)}
-                >
-                  더보기
-                </MenuText>
-                <Menu {...bindMenu(popupState)} style={{ marginTop: 25 }}>
-                  <MenuItem
-                    style={
-                      width < 360
-                        ? { fontFamily: "다이어리체" }
-                        : { display: "none" }
-                    }
-                    onClick={() => {
-                      popupState.close();
-                    }}
+    <ViewContainer>
+      <View>
+        <Container>
+          {/* {홈 이동 } */}
+          <MenuButton
+            style={
+              home ? { borderBottom: "3px white solid", marginBottom: 0 } : {}
+            }
+          >
+            <MenuText to="/">Home</MenuText>
+          </MenuButton>
+          <MenuButton
+            style={
+              width < 360
+                ? { display: "none" }
+                : {
+                    borderBottom: pokso ? "3px white solid" : "",
+                    marginBottom: pokso ? 0 : 3,
+                  }
+            }
+          >
+            {/* 폭소게시판 이동 */}
+            <MenuText to="/pokso/1">폭소게시판</MenuText>
+          </MenuButton>
+          <MenuButton style={width < 440 ? { display: "none" } : {}}>
+            {/* 자유 게시판 이동 */}
+            <MenuText to="#">자유 게시판</MenuText>
+          </MenuButton>
+          <MenuButton style={width < 440 ? { display: "none" } : {}}>
+            {/* 메뉴2 이동 */}
+            <MenuText to="#">메뉴2</MenuText>
+          </MenuButton>
+          {/* width 줄어들시 더보기 메뉴 바 생성 */}
+          <MenuButton style={{ marginRight: 0 }}>
+            <PopupState variant="popover" popupId="demo-popup-menu">
+              {(popupState) => (
+                <div style={width >= 440 ? { display: "none" } : {}}>
+                  <MenuText
+                    to="#"
+                    style={{ width: 70 }}
+                    {...bindTrigger(popupState)}
                   >
-                    폭소게시판
-                  </MenuItem>
-                  <MenuItem
-                    style={
-                      width < 440
-                        ? { fontFamily: "다이어리체" }
-                        : { display: "none" }
-                    }
-                    onClick={() => {
-                      popupState.close();
-                    }}
-                  >
-                    메뉴1
-                  </MenuItem>
-                  <MenuItem
-                    style={
-                      width < 440
-                        ? { fontFamily: "다이어리체" }
-                        : { display: "none" }
-                    }
-                    onClick={() => {
-                      popupState.close();
-                    }}
-                  >
-                    메뉴2
-                  </MenuItem>
-                </Menu>
-              </div>
-            )}
-          </PopupState>
-        </MenuButton>
-      </Container>
-    </View>
+                    더보기
+                  </MenuText>
+                  <Menu {...bindMenu(popupState)} style={{ marginTop: 25 }}>
+                    <MenuItem
+                      style={
+                        width < 360
+                          ? { fontFamily: "다이어리체" }
+                          : { display: "none" }
+                      }
+                      onClick={() => {
+                        popupState.close();
+                      }}
+                    >
+                      폭소게시판
+                    </MenuItem>
+                    <MenuItem
+                      style={
+                        width < 440
+                          ? { fontFamily: "다이어리체" }
+                          : { display: "none" }
+                      }
+                      onClick={() => {
+                        popupState.close();
+                      }}
+                    >
+                      자유 게시판
+                    </MenuItem>
+                    <MenuItem
+                      style={
+                        width < 440
+                          ? { fontFamily: "다이어리체" }
+                          : { display: "none" }
+                      }
+                      onClick={() => {
+                        popupState.close();
+                      }}
+                    >
+                      메뉴2
+                    </MenuItem>
+                  </Menu>
+                </div>
+              )}
+            </PopupState>
+          </MenuButton>
+        </Container>
+      </View>
+    </ViewContainer>
   );
 }

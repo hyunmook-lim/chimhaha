@@ -6,6 +6,7 @@ const theme = {
     background_footer: "rgb(65,65,65)",
     background_content: "rgb(65,65,65)",
     background_hover_color: "rgb(200,200,200)",
+    background_login: "rgb(50,50,50)",
     button: "skyblue",
     header_title: "gold",
     title: "gold",
@@ -15,6 +16,7 @@ const theme = {
     top_menu_bar: 12,
     menu_bar: 20,
     drawer_text: 16,
+    normal_text: 16,
   },
 };
 
