@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Header, MenuBar, Footer } from "./components";
 import theme from "../data/theme";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const mobile_screen_size = 1100;
 
@@ -118,30 +119,175 @@ export default function Login() {
               회원가입
             </SelectButton>
           </SelectButtonContainer>
-          <LoginSignupContainer>
-            <TextField
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+          {isLogin ? (
+            <LoginSignupContainer>
+              <TextField
+                sx={{
+                  marginTop: 5,
+                  marginBottom: 3,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
                   },
-                  "&. Mui-hover": {
-                    borderColor: "white",
+                  label: { color: "white" },
+                }}
+                id="outlined-basic"
+                label="이메일"
+                variant="outlined"
+              />
+              <TextField
+                sx={{
+                  marginTop: 3,
+                  marginBottom: 3,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
                   },
-                  "& .MuiOutlinedInput-input": {
-                    color: "white",
-                    borderColor: "white",
+                  label: { color: "white" },
+                }}
+                id="outlined-password"
+                type="password"
+                label="비밀번호"
+                variant="outlined"
+              />
+              <Button
+                sx={{
+                  width: 80,
+                  marginTop: 3,
+                  marginBottom: 5,
+                  color: "white",
+                  borderColor: "white",
+                }}
+                variant="outlined"
+              >
+                로그인
+              </Button>
+            </LoginSignupContainer>
+          ) : (
+            <LoginSignupContainer>
+              <TextField
+                sx={{
+                  marginTop: 5,
+                  marginBottom: 2,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
                   },
-                  "&:hover fieldset": { borderColor: "white" },
-                  "&.Mui-focused fieldset": { borderColor: "skyblue" },
-                },
-                label: { color: "white" },
-              }}
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-            />
-          </LoginSignupContainer>
+                  label: { color: "white" },
+                }}
+                id="outlined-basic"
+                label="이메일"
+                variant="outlined"
+              />
+              <TextField
+                sx={{
+                  marginTop: 2,
+                  marginBottom: 2,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
+                  },
+                  label: { color: "white" },
+                }}
+                id="outlined-password"
+                type="password"
+                label="비밀번호"
+                variant="outlined"
+              />
+              <TextField
+                sx={{
+                  marginTop: 2,
+                  marginBottom: 3,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
+                  },
+                  label: { color: "white" },
+                }}
+                id="outlined-password"
+                type="password"
+                label="비밀번호 확인"
+                variant="outlined"
+              />
+              <Button
+                sx={{
+                  width: 80,
+                  marginTop: 3,
+                  marginBottom: 5,
+                  color: "white",
+                  borderColor: "white",
+                }}
+                variant="outlined"
+              >
+                가입
+              </Button>
+            </LoginSignupContainer>
+          )}
         </LoginContainer>
       </Grid>
       <Footer />

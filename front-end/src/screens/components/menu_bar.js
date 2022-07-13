@@ -69,6 +69,18 @@ const MenuText = styled(Link)`
   }
 `;
 
+const LoginButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-left: auto;
+`;
+
+const LoginButton = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
 export default function MenuBar({ home, pokso }) {
   const width = useWindowDimensions().width;
 
@@ -160,6 +172,9 @@ export default function MenuBar({ home, pokso }) {
             </PopupState>
           </MenuButton>
         </Container>
+        <LoginButtonContainer>
+          <LoginButton to="/login">로그인</LoginButton>
+        </LoginButtonContainer>
       </View>
     </ViewContainer>
   );
