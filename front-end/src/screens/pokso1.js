@@ -1,7 +1,9 @@
 import React from "react";
+import { Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import { Header, MenuBar, Footer } from "./components";
 import { PoksoDrawer, PoksoBody, ContentContainer } from "./pokso/";
+import PoksoContent from "./pokso_content";
 
 const View = styled.div`
   display: flex;
@@ -11,7 +13,7 @@ const View = styled.div`
   width: 100%;
 `;
 
-export default function Pokso1() {
+export default function Pokso1({ match }) {
   return (
     <View>
       <Header />
@@ -24,49 +26,14 @@ export default function Pokso1() {
           <h1>text</h1>
           <h1>text</h1>
           <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
-          <h1>text</h1>
+          <Link
+            id={12}
+            key={12}
+            to={`/pokso/12`}
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            link to content
+          </Link>
         </ContentContainer>
       </PoksoBody>
       <Footer />

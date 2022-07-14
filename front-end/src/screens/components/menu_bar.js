@@ -74,10 +74,12 @@ const LoginButtonContainer = styled.div`
   flex-direction: column;
   align-self: center;
   margin-left: auto;
+  margin-right: 3vw;
 `;
 
 const LoginButton = styled(Link)`
   text-decoration: none;
+  font-weight: 700;
   color: white;
 `;
 

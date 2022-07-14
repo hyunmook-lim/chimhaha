@@ -147,6 +147,7 @@ export default function Login() {
                 id="outlined-basic"
                 label="이메일"
                 variant="outlined"
+                autoFocus={true}
               />
               <TextField
                 sx={{
