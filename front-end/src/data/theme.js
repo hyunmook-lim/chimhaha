@@ -17,6 +17,8 @@ const theme = {
     menu_bar: 20,
     drawer_text: 16,
     normal_text: 16,
+    screen_width: 1120,
+    mobile_screen_width: 1100,
   },
 };
 

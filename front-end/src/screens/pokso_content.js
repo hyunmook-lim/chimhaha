@@ -17,7 +17,6 @@ export default function PoksoContent() {
       <Header />
       <MenuBar pokso={true} />
       <PoksoBody>
-        <PoksoDrawer />
         <ContentContainer></ContentContainer>
       </PoksoBody>
       <Footer />

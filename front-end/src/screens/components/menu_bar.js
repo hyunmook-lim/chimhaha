@@ -109,16 +109,13 @@ export default function MenuBar({ home, pokso }) {
             }
           >
             {/* 폭소게시판 이동 */}
-            <MenuText to="/pokso/1">폭소게시판</MenuText>
+            <MenuText to="/pokso">폭소게시판</MenuText>
           </MenuButton>
           <MenuButton style={width < 440 ? { display: "none" } : {}}>
             {/* 자유 게시판 이동 */}
             <MenuText to="#">자유 게시판</MenuText>
           </MenuButton>
-          <MenuButton style={width < 440 ? { display: "none" } : {}}>
-            {/* 메뉴2 이동 */}
-            <MenuText to="#">메뉴2</MenuText>
-          </MenuButton>
+
           {/* width 줄어들시 더보기 메뉴 바 생성 */}
           <MenuButton style={{ marginRight: 0 }}>
             <PopupState variant="popover" popupId="demo-popup-menu">
@@ -155,18 +152,6 @@ export default function MenuBar({ home, pokso }) {
                       }}
                     >
                       자유 게시판
-                    </MenuItem>
-                    <MenuItem
-                      style={
-                        width < 440
-                          ? { fontFamily: "다이어리체" }
-                          : { display: "none" }
-                      }
-                      onClick={() => {
-                        popupState.close();
-                      }}
-                    >
-                      메뉴2
                     </MenuItem>
                   </Menu>
                 </div>

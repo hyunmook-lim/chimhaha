@@ -74,8 +74,6 @@ const LoginSignupContainer = styled.div`
   width: 100%;
 `;
 
-const LoginId = styled.div``;
-
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
 
@@ -87,6 +85,7 @@ export default function Login() {
         <Content>
           <img
             src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png"
+            alt="logo"
             style={{ width: 300 }}
           />
         </Content>
