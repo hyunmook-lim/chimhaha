@@ -69,10 +69,10 @@ public class Member {
     /**
      * 객체 값 변경
      */
-    public Long changeMemberData(String password, Profile profile, Date date, Gender gender) {
+    public Long changeMemberData(String password, Profile profile, Date birthday, Gender gender) {
         this.password = password;
         this.profile = profile;
-        this.birthday = date;
+        this.birthday = birthday;
         this.gender = gender;
 
         return this.id;

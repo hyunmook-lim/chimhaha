@@ -36,7 +36,8 @@ public class Image {
     /**
      * 생성
      */
-    public static Image createImage(Image image, String imageName, String filePath, String contentType, long imageSize){
+    public static Image createImage(String imageName, String filePath, String contentType, long imageSize){
+        Image image = new Image();
 
         image.imageName = imageName;
         image.filePath = filePath;

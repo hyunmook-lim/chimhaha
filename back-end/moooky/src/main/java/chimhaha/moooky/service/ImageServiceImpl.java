@@ -19,7 +19,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public void saveImage(MultipartFile file) {
-        Image image = new Image();
+
     }
 
     @Override
