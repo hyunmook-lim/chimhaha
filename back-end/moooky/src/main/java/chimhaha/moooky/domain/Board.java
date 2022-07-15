@@ -4,8 +4,8 @@ import chimhaha.moooky.enums.Grade;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,7 +20,7 @@ public class Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    private Date postedDate;
+    private LocalDateTime postedDate;
 
     @Enumerated(EnumType.STRING)
     private Grade grade;
@@ -32,9 +32,6 @@ public class Board {
     private Integer hitTimes;
 
     private Integer likes;
-
-    @OneToMany(mappedBy = "board")
-    private List<Photo> photos = new ArrayList<>();
 
     @OneToMany(mappedBy = "board")
     private List<Comment> comments = new ArrayList<>();
@@ -58,22 +55,21 @@ public class Board {
         board.title = title;
         board.content = content;
 
-        board.grade = Grade.FIRST;
+        board.grade = Grade.UNGRADED;
         board.hitTimes = 0;
         board.likes = 0;
-
-        board.photos = new ArrayList<>();
         board.comments = new ArrayList<>();
+
+        board.postedDate = LocalDateTime.now();  //작성 시간을 현재로 설정
 
         return board;
     }
     /**
      * 변경
      */
-    public Long changeBoardData(String title, String content, Photo... photos) {
+    public Long changeBoardData(String title, String content) {
         this.title = title;
         this.content = content;
-        this.photos = List.of(photos);
 
         //날짜를 변경 날짜로 수정
 

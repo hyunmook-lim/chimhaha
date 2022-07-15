@@ -3,7 +3,7 @@ package chimhaha.moooky.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -23,7 +23,7 @@ public class Comment {
 
     private String content;
 
-    private Date postedDate;
+    private LocalDateTime postedDate;
     //== 연관관계 메서드==//
     /**
      * 댓글 생성 시 member의 comments 에 추가
@@ -51,9 +51,7 @@ public class Comment {
         comment.setBoard(board);
         comment.content = content;
 
-        //생성 날짜 가져오기
-        Date date = new Date();
-        comment.postedDate = date;
+        comment.postedDate = LocalDateTime.now();
 
         return comment;
     }
