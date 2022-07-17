@@ -3,7 +3,6 @@ package chimhaha.moooky.repository;
 import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.domain.Profile;
 import chimhaha.moooky.enums.Gender;
-import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import java.util.Date;
+import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,7 +28,7 @@ public class MemberRepositoryImplTest {
 
         //given
         Profile profile = new Profile();
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
         Member member1 = Member.createMember("hello", "1234", "hmli@naver.com", profile, date, Gender.FEMALE);
         memberRepository.save(member1);
         //when
@@ -43,8 +41,8 @@ public class MemberRepositoryImplTest {
     @Rollback(value = false)
     public void 중복회원오류() {
         //given
-        Member member1 = Member.createMember("mook", "1234", "fielf@anve.com", new Profile(), new Date(), Gender.FEMALE);
-        Member member2 = Member.createMember("mook", "1234", "fielf@anve.com", new Profile(), new Date(), Gender.FEMALE);
+        Member member1 = Member.createMember("mook", "1234", "fielf@anve.com", new Profile(), LocalDate.now(), Gender.FEMALE);
+        Member member2 = Member.createMember("mook", "1234", "fielf@anve.com", new Profile(), LocalDate.now(), Gender.FEMALE);
         //when
         System.out.println("-------------------------");
         memberRepository.save(member1);

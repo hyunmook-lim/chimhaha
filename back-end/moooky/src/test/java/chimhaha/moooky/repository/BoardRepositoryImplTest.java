@@ -13,9 +13,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-
-import static org.junit.Assert.*;
+import java.time.LocalDate;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -32,7 +30,7 @@ public class BoardRepositoryImplTest {
         String title = "안녕하세요";
         String content = "test";
 
-        Member member = Member.createMember("mook", "1234", "hmli@naver.com", new Profile(), new Date(), Gender.FEMALE);
+        Member member = Member.createMember("mook", "1234", "hmli@naver.com", new Profile(), LocalDate.of(1995, 3, 20), Gender.FEMALE);
 
         Board board = Board.createBoard(member, title, content);
         //when

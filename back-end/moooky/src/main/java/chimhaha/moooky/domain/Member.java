@@ -4,8 +4,8 @@ import chimhaha.moooky.enums.Gender;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -37,7 +37,7 @@ public class Member {
     @JoinColumn(name = "PROFILE_ID")
     private Profile profile;
 
-    private Date birthday;
+    private LocalDate birthday;
 
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
@@ -49,7 +49,7 @@ public class Member {
      * 생성
      */
 
-    public static Member createMember(String nickname, String password, String email, Profile profile, Date birthday, Gender gender) {
+    public static Member createMember(String nickname, String password, String email, Profile profile, LocalDate birthday, Gender gender) {
         Member member = new Member();
 
         member.nickname = nickname;
@@ -69,7 +69,7 @@ public class Member {
     /**
      * 객체 값 변경
      */
-    public Long changeMemberData(String password, Profile profile, Date birthday, Gender gender) {
+    public Long changeMemberData(String password, Profile profile, LocalDate birthday, Gender gender) {
         this.password = password;
         this.profile = profile;
         this.birthday = birthday;

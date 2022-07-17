@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
+import java.time.LocalDate;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +22,12 @@ public class MemberApiController {
      */
     @PostMapping("api/members")
     public CreateMemberResponse joinMember(@RequestBody @Valid CreateMemberRequest request) {
-        Member member = Member.createMember(request.getNickname(), request.getPassword(), request.getEmail(), request.getProfile(), request.getBirthday(), request.getGender());
+
+        LocalDate defaultBirthday = LocalDate.of(1900, 1, 1);
+        Profile defaultProfile = null;
+
+        Member member = Member.createMember(request.getNickname(), request.getPassword(), request.getEmail(), defaultProfile,
+                defaultBirthday, request.getGender());
         memberService.signIn(member);
 
         return new CreateMemberResponse(member.getId(), member.getNickname());
@@ -73,7 +78,7 @@ public class MemberApiController {
 
         private Profile profile;
 
-        private Date birthday;
+        private LocalDate birthday;
 
         private Gender gender;
     }
@@ -96,7 +101,7 @@ public class MemberApiController {
 
         private Profile profile;
 
-        private Date birthday;
+        private LocalDate birthday;
 
         private Gender gender;
     }
