@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import { List } from "@mui/material";
 import PoksoDrawerMenuItem from "../components/pokso_drawer_menu_item";
+import { PoksoPageNumAction } from "../../redux/actions/pokso_page_action";
 
 const View = styled.div`
   display: flex;
@@ -19,26 +21,53 @@ const Divider = styled.div`
   opacity: 0.3;
 `;
 
-export default function PoksoDrawer({
-  clickPokso1,
-  clickPokso2,
-  clickPokso3,
-  clickPokso4,
-}) {
+export default function PoksoDrawer() {
+  const dispatch = useDispatch();
+
   return (
     <View>
       <List>
         <Divider />
 
-        <PoksoDrawerMenuItem text={`폭소1`} onClick={clickPokso1} />
-        <PoksoDrawerMenuItem text={`폭소2`} onClick={clickPokso2} />
-        <PoksoDrawerMenuItem text={`폭소3`} onClick={clickPokso3} />
-        <PoksoDrawerMenuItem text={`폭소4`} onClick={clickPokso4} />
+        <PoksoDrawerMenuItem
+          text={`폭소1`}
+          to="/pokso"
+          onClick={() => {
+            dispatch(PoksoPageNumAction(1));
+          }}
+        />
+        <PoksoDrawerMenuItem
+          text={`폭소2`}
+          to="/pokso"
+          onClick={() => {
+            dispatch(PoksoPageNumAction(2));
+          }}
+        />
+        <PoksoDrawerMenuItem
+          text={`폭소3`}
+          to="/pokso"
+          onClick={() => {
+            dispatch(PoksoPageNumAction(3));
+          }}
+        />
+        <PoksoDrawerMenuItem
+          text={`폭소4`}
+          to="/pokso"
+          onClick={() => {
+            dispatch(PoksoPageNumAction(4));
+          }}
+        />
         <Divider />
-        <PoksoDrawerMenuItem text={`폭소5`} />
-        <PoksoDrawerMenuItem text={`폭소6`} />
-        <PoksoDrawerMenuItem text={`폭소7`} />
-        <PoksoDrawerMenuItem text={`폭소8`} />
+        <PoksoDrawerMenuItem
+          to="/pokso"
+          text={`폭소5`}
+          onClick={() => {
+            dispatch(PoksoPageNumAction(5));
+          }}
+        />
+        <PoksoDrawerMenuItem to="/pokso" text={`폭소6`} />
+        <PoksoDrawerMenuItem to="/pokso" text={`폭소7`} />
+        <PoksoDrawerMenuItem to="/pokso" text={`폭소8`} />
 
         <Divider />
       </List>

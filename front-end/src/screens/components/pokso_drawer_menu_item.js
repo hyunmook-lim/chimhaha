@@ -8,10 +8,10 @@ const ListLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default function PoksoDrawerMenuItem({ text, onClick }) {
+export default function PoksoDrawerMenuItem({ text, onClick, to }) {
   return (
     <ListItem key={text} disablePadding style={{ padding: 1.5 }}>
-      <ListLink to="#" onClick={onClick}>
+      <ListLink to={to} onClick={onClick}>
         <ListItemButton
           sx={{
             borderRadius: 5,

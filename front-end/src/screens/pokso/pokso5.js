@@ -124,12 +124,12 @@ const ListItemLike = styled.div`
   text-align: center;
 `;
 
-export default function Pokso1() {
-  var test_list = [1, 2, 3, 4, 5];
+export default function Pokso5() {
+  const test_list = [1, 2, 3, 4, 5];
   return (
     <View>
       <List>
-        <ListTitle>폭소1</ListTitle>
+        <ListTitle>폭소5</ListTitle>
         <ListHeader>
           <ListHeaderTitle>제목</ListHeaderTitle>
           <ListHeaderName>작성자</ListHeaderName>
@@ -138,16 +138,14 @@ export default function Pokso1() {
           <ListHeaderLike>좋아요</ListHeaderLike>
         </ListHeader>
         {test_list.map((text, index) => (
-          <ListItemContainer key={text}>
+          <ListItemContainer>
             <ListItemTitle id={text} key={text} to={`/pokso/${text}`}>
               {`Link To Content ${text}`}
             </ListItemTitle>
-            <ListItemName key={text} to="#">
-              육정수
-            </ListItemName>
-            <ListItemDate key={text}>2022.07.17</ListItemDate>
-            <ListItemView key={text}>12</ListItemView>
-            <ListItemLike key={text}>2</ListItemLike>
+            <ListItemName to="#">육정수</ListItemName>
+            <ListItemDate>2022.07.17</ListItemDate>
+            <ListItemView>12</ListItemView>
+            <ListItemLike>2</ListItemLike>
           </ListItemContainer>
         ))}
       </List>
