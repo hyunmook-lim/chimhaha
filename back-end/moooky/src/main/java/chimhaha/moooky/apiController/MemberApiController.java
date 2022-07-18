@@ -24,9 +24,8 @@ public class MemberApiController {
     public CreateMemberResponse joinMember(@RequestBody @Valid CreateMemberRequest request) {
 
         LocalDate defaultBirthday = LocalDate.of(1900, 1, 1);
-        Profile defaultProfile = null;
 
-        Member member = Member.createMember(request.getNickname(), request.getPassword(), request.getEmail(), defaultProfile,
+        Member member = Member.createMember(request.getNickname(), request.getPassword(), request.getEmail(), null,
                 defaultBirthday, request.getGender());
         memberService.signIn(member);
 

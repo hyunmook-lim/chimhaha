@@ -7,7 +7,7 @@ public interface BoardService {
 
     void saveBoard(Board board);
 
-    void findOneBoard(Long boardId);
+    Board findOneBoard(Long boardId);
 
     void changeGrade(Long boardId, Grade grade);
 

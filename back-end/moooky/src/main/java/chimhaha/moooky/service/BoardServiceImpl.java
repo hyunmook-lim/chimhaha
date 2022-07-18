@@ -21,8 +21,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void findOneBoard(Long boardId) {
-        boardRepository.findById(boardId);
+    public Board findOneBoard(Long boardId) {
+        return boardRepository.findById(boardId);
     }
 
     @Override
