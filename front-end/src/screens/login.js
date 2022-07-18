@@ -29,7 +29,6 @@ const Content = styled.div`
   display-direction: column;
   align-items: center;
   justify-content: center;
-  height: 500px;
   @media (max-width: ${mobile_screen_size}px) {
     margin: 12px 5px;
   }
@@ -39,7 +38,7 @@ const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.background_content};
-  height: 500px;
+  height: 600px;
   border-radius: 15px;
   margin: 20px 15px;
   }
@@ -60,7 +59,7 @@ const SelectButton = styled(Link)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: white;
+  color: ${({ theme }) => theme.color.normal_text};
   font-size: ${({ theme }) => theme.size.normal_text}px;
 `;
 
@@ -194,6 +193,33 @@ export default function Login() {
               <TextField
                 sx={{
                   marginTop: 5,
+                  marginBottom: 2,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
+                  },
+                  label: { color: "white" },
+                }}
+                id="outlined-basic"
+                label="닉네임"
+                variant="outlined"
+              />
+              <TextField
+                sx={{
+                  marginTop: 2,
                   marginBottom: 2,
                   width: 250,
                   "& .MuiOutlinedInput-root": {

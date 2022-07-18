@@ -1,0 +1,17 @@
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 400px;
+  width: 100%;
+	font-size: 1em;
+	line-height: 1.6em;
+
+
+}
+
+.ck.editor[role='textbox'] {
+	width: 100%;
+	background: blue;
+	font-size: 1em;
+	line-height: 1.6em;
+	min-height: var(--ck-sample-editor-min-height);
+	padding: 1.5em 2em;
+}
