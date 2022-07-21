@@ -25,7 +25,6 @@ const TextContainer = styled.div`
 
 const Text = styled.div`
   font-size: 15px;
-  font-weight: 300;
   color: ${({ theme }) => theme.color.normal_text};
   margin: 10px 20px;
 `;

@@ -84,7 +84,7 @@ const LoginButton = styled(Link)`
   text-decoration: none;
   font-weight: 700;
   font-size: ${({ theme }) => theme.size.normal_text}px;
-  color: white;
+  color: ${({ theme }) => theme.color.normal_text};
 `;
 
 export default function MenuBar({ home, pokso }) {
@@ -103,7 +103,7 @@ export default function MenuBar({ home, pokso }) {
           {/* {홈 이동 } */}
           <MenuButton
             style={
-              home ? { borderBottom: "3px white solid", marginBottom: 0 } : {}
+              home ? { borderBottom: "3px black solid", marginBottom: 0 } : {}
             }
           >
             <MenuText to="/">Home</MenuText>
@@ -113,7 +113,7 @@ export default function MenuBar({ home, pokso }) {
               width < 360
                 ? { display: "none" }
                 : {
-                    borderBottom: pokso ? "3px white solid" : "",
+                    borderBottom: pokso ? "3px black solid" : "",
                     marginBottom: pokso ? 0 : 3,
                   }
             }

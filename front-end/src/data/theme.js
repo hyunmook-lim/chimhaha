@@ -5,7 +5,7 @@ const theme = {
     background_footer: "rgb(250,250,250)",
     background_content: "rgb(65,65,65)",
     background_hover_color: "rgb(200,200,200)",
-    background_login: "rgb(50,50,50)",
+    background_login: "rgb(250,250,250)",
     button: "black",
     normal_text: "black",
     grid: "gray",

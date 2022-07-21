@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^34.2.0",
-    "@ckeditor/ckeditor5-editor-classic": "^34.2.0",
     "@ckeditor/ckeditor5-react": "^5.0.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
