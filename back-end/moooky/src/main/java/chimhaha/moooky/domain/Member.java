@@ -28,7 +28,7 @@ public class Member {
     private List<Board> boards = new ArrayList<>();
 
     //좋아요 표시한 게시글들의 id
-    private List<Long> likeBoardIds = new ArrayList<>();
+//    private List<Long> likeBoardIds = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();

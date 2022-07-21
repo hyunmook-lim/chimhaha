@@ -1,6 +1,5 @@
 package chimhaha.moooky.service;
 
-import chimhaha.moooky.domain.Board;
 import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.repository.BoardRepositoryImpl;
 import chimhaha.moooky.repository.MemberRepositoryImpl;
@@ -20,10 +19,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     @Transactional
-    public void signIn(Member member) {
+    public Long signIn(Member member) {
 
-        validateDuplicateMember(member);
+//        validateDuplicateMember(member);
+        System.out.println("-----------------------------------");
         memberRepository.save(member);
+
+        return member.getId();
     }
 
     @Override
@@ -54,17 +56,17 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.delete(member);
     }
 
-    @Override
-    public void chooseLikeOnBoard(Member member, Long boardId) {
-        Board findBoard = boardRepository.findById(boardId);
-        //이미 좋아요 표시를 한 경우 취소
-        if (member.getLikeBoardIds().contains(boardId)) {
-            member.getLikeBoardIds().remove(boardId);
-            findBoard.cancelLikes();
-        } else { // 좋아요 표시를 하지 않은 경우 좋아요
-            member.getLikeBoardIds().add(boardId);
-            findBoard.addLikes();
-        }
-
-    }
+//    @Override
+//    public void chooseLikeOnBoard(Member member, Long boardId) {
+//        Board findBoard = boardRepository.findById(boardId);
+//        //이미 좋아요 표시를 한 경우 취소
+//        if (member.getLikeBoardIds().contains(boardId)) {
+//            member.getLikeBoardIds().remove(boardId);
+//            findBoard.cancelLikes();
+//        } else { // 좋아요 표시를 하지 않은 경우 좋아요
+//            member.getLikeBoardIds().add(boardId);
+//            findBoard.addLikes();
+//        }
+//
+//    }
 }
