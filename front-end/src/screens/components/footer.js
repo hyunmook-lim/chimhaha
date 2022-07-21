@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import theme from "../../data/theme";
 
 const mobile_screen_size = 1200;
 
@@ -25,7 +26,7 @@ const TextContainer = styled.div`
 const Text = styled.div`
   font-size: 15px;
   font-weight: 300;
-  color: white;
+  color: ${({ theme }) => theme.color.normal_text};
   margin: 10px 20px;
 `;
 
@@ -54,7 +55,7 @@ export default function Footer() {
           href="https://github.com/codepam2020"
           style={{ textDecoration: "none" }}
         >
-          <GitHubIcon style={{ color: "white" }} />
+          <GitHubIcon style={{ color: theme.color.normal_text }} />
         </a>
       </TextContainer>
     </View>

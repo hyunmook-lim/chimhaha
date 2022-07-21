@@ -25,9 +25,6 @@ export default function PoksoContent() {
           <CKEditor
             config={{
               placeholder: "글을 입력해보세요!",
-              toolbar: {
-                items: ["heading", "|", "fontColor", "bold", "bold"],
-              },
             }}
             editor={ClassicEditor}
             onReady={(editor) => {

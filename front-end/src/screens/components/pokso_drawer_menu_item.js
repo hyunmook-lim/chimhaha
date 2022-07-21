@@ -15,16 +15,13 @@ export default function PoksoDrawerMenuItem({ text, onClick, to }) {
         <ListItemButton
           style={{ textDecoration: "none" }}
           sx={{
-            borderRadius: 5,
-            "&:hover": {
-              backgroundColor: "gray",
-            },
+            borderRadius: 3,
           }}
         >
           <ListItemText
             primaryTypographyProps={{
-              color: "white",
               fontSize: theme.size.drawer_text,
+              color: theme.color.normal_text,
               textDecoration: "none",
             }}
             style={{ textDecoration: "none" }}
