@@ -1,4 +1,4 @@
-function PoksoPageNum(state = initialState, action) {
+export default function PoksoPageNumReducer(state = initialState, action) {
   switch (action.type) {
     case "POKSOPAGENUM":
       return action.pokso_page_num;
@@ -9,5 +9,3 @@ function PoksoPageNum(state = initialState, action) {
 }
 
 const initialState = 1;
-
-export { PoksoPageNum };

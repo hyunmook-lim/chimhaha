@@ -5,8 +5,8 @@ import { Header, MenuBar, Footer } from "./components";
 import theme from "../data/theme";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
-const mobile_screen_size = 1100;
+import { useDispatch } from "react-redux";
+import { LoginAction } from "../redux/actions/login_action";
 
 const View = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const Content = styled.div`
   display-direction: column;
   align-items: center;
   justify-content: center;
-  @media (max-width: ${mobile_screen_size}px) {
+  @media (max-width: ${({ theme }) => theme.size.mobile_screen_width}px) {
     margin: 12px 5px;
   }
 `;
@@ -74,7 +74,28 @@ const LoginSignupContainer = styled.div`
 `;
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(true);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  // 로그인 버튼 클릭
+  function loginButtonClick() {
+    dispatch(
+      LoginAction({
+        logined: true,
+        email: "email",
+        password: "password",
+        name: "yook",
+        nickname: "yoooook",
+        sex: "male",
+        birthday: "960221",
+      })
+    );
+  }
+
+  console.log(`email: ${loginEmail}`);
+  console.log(`password: ${loginPassword}`);
 
   return (
     <View>
@@ -146,6 +167,10 @@ export default function Login() {
                 label="이메일"
                 variant="outlined"
                 autoFocus={true}
+                onChange={(e) => {
+                  setLoginEmail(e.target.value);
+                }}
+                value={loginEmail}
               />
               <TextField
                 sx={{
@@ -174,19 +199,26 @@ export default function Login() {
                 type="password"
                 label="비밀번호"
                 variant="outlined"
-              />
-              <Button
-                sx={{
-                  width: 80,
-                  marginTop: 3,
-                  marginBottom: 5,
-                  color: "white",
-                  borderColor: "white",
+                onChange={(e) => {
+                  setLoginPassword(e.target.value);
                 }}
-                variant="outlined"
-              >
-                로그인
-              </Button>
+                value={loginPassword}
+              />
+              <Link to="../">
+                <Button
+                  sx={{
+                    width: 80,
+                    marginTop: 3,
+                    marginBottom: 5,
+                    color: "white",
+                    borderColor: "white",
+                  }}
+                  variant="outlined"
+                  onClick={loginButtonClick}
+                >
+                  로그인
+                </Button>
+              </Link>
             </LoginSignupContainer>
           ) : (
             <LoginSignupContainer>
@@ -300,18 +332,20 @@ export default function Login() {
                 label="비밀번호 확인"
                 variant="outlined"
               />
-              <Button
-                sx={{
-                  width: 80,
-                  marginTop: 3,
-                  marginBottom: 5,
-                  color: "white",
-                  borderColor: "white",
-                }}
-                variant="outlined"
-              >
-                가입
-              </Button>
+              <Link to="/signup" style={{ textDecoration: "none" }}>
+                <Button
+                  sx={{
+                    width: 80,
+                    marginTop: 3,
+                    marginBottom: 5,
+                    color: "white",
+                    borderColor: "white",
+                  }}
+                  variant="outlined"
+                >
+                  가입
+                </Button>
+              </Link>
             </LoginSignupContainer>
           )}
         </LoginContainer>

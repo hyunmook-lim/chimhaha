@@ -19,7 +19,7 @@ const theme = {
     drawer_text: 14,
     normal_text: 14,
     title_text: 24,
-    screen_width: 1070,
+    screen_width: 1100,
     mobile_screen_width: 1100,
   },
 };

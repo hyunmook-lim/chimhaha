@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import { useSelector, useDispatch } from "react-redux";
 import useWindowDimensions from "../../utils/getWindowDimensions";
 import { Link } from "react-router-dom";
+import { LoginAction } from "../../redux/actions/login_action";
 
 const ViewContainer = styled.div`
   display: flex;
@@ -22,7 +24,7 @@ const View = styled.div`
   align-items: end;
   justify-content: start;
   align-self: start;
-  width: 1150px;
+  width: ${({ theme }) => theme.size.screen_width}px;
 `;
 
 const Container = styled.div`
@@ -71,20 +73,28 @@ const MenuText = styled(Link)`
 
 const LoginButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-self: center;
+  justify-content: center;
   margin-left: auto;
-  margin-right: 3vw;
+  margin-right: 1.5vw;
 `;
 
 const LoginButton = styled(Link)`
   text-decoration: none;
   font-weight: 700;
+  font-size: ${({ theme }) => theme.size.normal_text}px;
   color: white;
 `;
 
 export default function MenuBar({ home, pokso }) {
   const width = useWindowDimensions().width;
+  const dispatch = useDispatch();
+  const { login_info } = useSelector((state) => {
+    return { login_info: state.login_info };
+  });
+
+  console.log(login_info);
 
   return (
     <ViewContainer>
@@ -159,9 +169,26 @@ export default function MenuBar({ home, pokso }) {
             </PopupState>
           </MenuButton>
         </Container>
-        <LoginButtonContainer>
-          <LoginButton to="/login">로그인</LoginButton>
-        </LoginButtonContainer>
+        {login_info.logined ? (
+          <LoginButtonContainer>
+            <LoginButton to="/login" style={{ marginRight: 12 }}>
+              내정보
+            </LoginButton>
+            <LoginButton
+              to="#"
+              style={{ marginLeft: 12 }}
+              onClick={() => {
+                dispatch(LoginAction({ logined: false }));
+              }}
+            >
+              로그아웃
+            </LoginButton>
+          </LoginButtonContainer>
+        ) : (
+          <LoginButtonContainer>
+            <LoginButton to="/login">로그인</LoginButton>
+          </LoginButtonContainer>
+        )}
       </View>
     </ViewContainer>
   );

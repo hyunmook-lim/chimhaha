@@ -10,7 +10,7 @@ const View = styled.div`
   flex-direction: column;
   align-items: center;
   width: 190px;
-  margin: 50px 10px;
+  margin: 50px 1px;
 `;
 
 const Divider = styled.div`

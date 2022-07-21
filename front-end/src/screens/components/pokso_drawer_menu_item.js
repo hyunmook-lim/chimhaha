@@ -13,6 +13,7 @@ export default function PoksoDrawerMenuItem({ text, onClick, to }) {
     <ListItem key={text} disablePadding style={{ padding: 1.5 }}>
       <ListLink to={to} onClick={onClick}>
         <ListItemButton
+          style={{ textDecoration: "none" }}
           sx={{
             borderRadius: 5,
             "&:hover": {
@@ -24,7 +25,9 @@ export default function PoksoDrawerMenuItem({ text, onClick, to }) {
             primaryTypographyProps={{
               color: "white",
               fontSize: theme.size.drawer_text,
+              textDecoration: "none",
             }}
+            style={{ textDecoration: "none" }}
             primary={text}
           ></ListItemText>
         </ListItemButton>

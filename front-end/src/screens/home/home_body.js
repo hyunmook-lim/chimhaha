@@ -16,7 +16,7 @@ const ContentWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  grid-template-columns: 570px 570px;
+  grid-template-columns: 550px 550px;
   margin-top: 10px;
   @media (max-width: ${mobile_screen_size}px) {
     grid-template-columns: 90vw;

@@ -138,16 +138,16 @@ export default function Pokso1() {
           <ListHeaderLike>좋아요</ListHeaderLike>
         </ListHeader>
         {test_list.map((text, index) => (
-          <ListItemContainer key={text}>
-            <ListItemTitle id={text} key={text} to={`/pokso/${text}`}>
+          <ListItemContainer key={`${text}_container`}>
+            <ListItemTitle key={`${text}_title`} to={`/pokso/${text}`}>
               {`Link To Content ${text}`}
             </ListItemTitle>
-            <ListItemName key={text} to="#">
+            <ListItemName key={`${text}_name`} to="#">
               육정수
             </ListItemName>
-            <ListItemDate key={text}>2022.07.17</ListItemDate>
-            <ListItemView key={text}>12</ListItemView>
-            <ListItemLike key={text}>2</ListItemLike>
+            <ListItemDate key={`${text}_date`}>2022.07.17</ListItemDate>
+            <ListItemView key={`${text}_view`}>12</ListItemView>
+            <ListItemLike key={`${text}_like`}>2</ListItemLike>
           </ListItemContainer>
         ))}
       </List>
