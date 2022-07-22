@@ -2,6 +2,7 @@ package chimhaha.moooky.apiController;
 
 import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.domain.Profile;
+import chimhaha.moooky.enums.Authority;
 import chimhaha.moooky.enums.Gender;
 import chimhaha.moooky.service.MemberServiceImpl;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @RestController
@@ -23,23 +25,35 @@ public class MemberApiController {
     @PostMapping("api/members")
     public CreateMemberResponse joinMember(@RequestBody @Valid CreateMemberRequest request) {
 
-        LocalDate defaultBirthday = LocalDate.of(1900, 1, 1);
+        Member member = Member.createMember(
+                                request.getNickname(),
+                                request.getPassword(),
+                                request.getEmail(),
+                                null,
+                                request.getBirthday(),
+                                request.getGender());
 
-        Member member = Member.createMember(request.getNickname(), request.getPassword(), request.getEmail(), null,
-                defaultBirthday, request.getGender());
         memberService.signIn(member);
 
-        return new CreateMemberResponse(member.getId(), member.getNickname());
+        return new CreateMemberResponse(member.getId(), member.getNickname(), member.getAuthority());
     }
 
     /**
      * 회원 조회
      */
     @GetMapping("api/members/{id}")
-    public Member findMember(@PathVariable("id") Long id) {
+    public FindMemberResponse findMember(@PathVariable("id") Long id) {
         Member findMember = memberService.findMemberById(id);
 
-        return findMember;
+
+        return new FindMemberResponse(
+                findMember.getId(),
+                findMember.getNickname(),
+                findMember.getEmail(),
+                findMember.getProfile(),
+                findMember.getBirthday(),
+                findMember.getGender(),
+                findMember.getAuthority());
     }
 
     /**
@@ -69,6 +83,7 @@ public class MemberApiController {
 
     @Data
     static class CreateMemberRequest {
+        @NotEmpty
         private String nickname;
 
         private String password;
@@ -88,9 +103,39 @@ public class MemberApiController {
 
         private String nickname;
 
-        public CreateMemberResponse(Long id, String nickname) {
+        private Authority authority;
+
+        public CreateMemberResponse(Long id, String nickname, Authority authority) {
             this.id = id;
             this.nickname = nickname;
+            this.authority = authority;
+        }
+    }
+
+    @Data
+    static class FindMemberResponse {
+        private Long id;
+
+        private String nickname;
+
+        private String email;
+
+        private Profile profile;
+
+        private LocalDate birthday;
+
+        private Gender gender;
+
+        private Authority authority;
+
+        public FindMemberResponse(Long id, String nickname, String email, Profile profile, LocalDate birthday, Gender gender, Authority authority) {
+            this.id = id;
+            this.nickname = nickname;
+            this.email = email;
+            this.profile = profile;
+            this.birthday = birthday;
+            this.gender = gender;
+            this.authority = authority;
         }
     }
 

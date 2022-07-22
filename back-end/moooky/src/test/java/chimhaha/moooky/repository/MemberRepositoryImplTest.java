@@ -7,11 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,32 +23,41 @@ public class MemberRepositoryImplTest {
     @Autowired MemberRepositoryImpl memberRepository;
 
     @Test
-    @Rollback(value = false)
     public void 회원저장() {
 
         //given
-        Profile profile = new Profile();
         LocalDate date = LocalDate.now();
-        Member member1 = Member.createMember("hello", "1234", "hmli@naver.com", profile, date, Gender.FEMALE);
+        Member member1 = Member.createMember("hello", "1234", "hmli@naver.com", null, date, Gender.FEMALE);
         memberRepository.save(member1);
         //when
-        Member findMember = memberRepository.findById(1L);
+        Member findMember = memberRepository.findByNickname("hello").get(0);
         //then
+        System.out.println("findMember = " + findMember);
+        System.out.println("member1 = " + member1);
+
         assertThat(findMember).isSameAs(member1);
     }
 
     @Test
-    @Rollback(value = false)
-    public void 중복회원오류() {
+    public void 중복회원검증() {
         //given
-        Member member1 = Member.createMember("mook", "1234", "fielf@anve.com", new Profile(), LocalDate.now(), Gender.FEMALE);
-        Member member2 = Member.createMember("mook", "1234", "fielf@anve.com", new Profile(), LocalDate.now(), Gender.FEMALE);
+        Member member1 = Member.createMember("mook", "1234", "fielf@anve.com", null, LocalDate.now(), Gender.FEMALE);
+
+        Member member2 = Member.createMember("hello", "1234", "dfefsf@anve.com", new Profile(), LocalDate.now(), Gender.FEMALE);
         //when
         System.out.println("-------------------------");
         memberRepository.save(member1);
         memberRepository.save(member2);
-        System.out.println("-------------------------");
 
         //then
+        List<Member> sameMember = memberRepository.findByEmail("dfefsf@anve.com");
+        assertThat(sameMember.size()).isEqualTo(1);
+
+        List<Member> sameNicknameMember = memberRepository.findByNickname("mook");
+        assertThat(sameNicknameMember.size()).isEqualTo(1);
+
+        List<Member> noSameMember = memberRepository.findByNickname("soo");
+        assertThat(noSameMember).isEmpty();
+
     }
 }

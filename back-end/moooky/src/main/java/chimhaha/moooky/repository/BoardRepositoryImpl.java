@@ -2,6 +2,7 @@ package chimhaha.moooky.repository;
 
 
 import chimhaha.moooky.domain.Board;
+import chimhaha.moooky.enums.Grade;
 import chimhaha.moooky.repository.interfaces.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,15 @@ public class BoardRepositoryImpl implements BoardRepository {
     public List<Board> findAll() {
         return em.createQuery("select b from Board b", Board.class)
                 .getResultList();
+    }
+
+    @Override
+    public List<Board> findByGrade(Grade grade) {
+        String query = "select b from Board b where b.grade=:grade";
+
+        List<Board> boards = em.createQuery(query).setParameter("grade", grade).getResultList();
+
+        return boards;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package chimhaha.moooky.domain;
 
+import chimhaha.moooky.enums.Authority;
 import chimhaha.moooky.enums.Gender;
 import lombok.Getter;
 
@@ -42,6 +43,7 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
+    private Authority authority;
     //== 연관관계 메서드 ==//
 
     //== 생성 메서드 ==//
@@ -59,6 +61,7 @@ public class Member {
         //생일 날짜 받아오기
         member.birthday = birthday;
         member.gender = gender;
+        member.authority = Authority.MEMBER;
 
         member.boards = new ArrayList<>();
         member.comments = new ArrayList<>();

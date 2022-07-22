@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -23,6 +25,13 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Board findOneBoard(Long boardId) {
         return boardRepository.findById(boardId);
+    }
+
+    @Override
+    public List<Board> GradeBoards(Grade grade) {
+        List<Board> boards = boardRepository.findByGrade(grade);
+
+        return boards;
     }
 
     @Override

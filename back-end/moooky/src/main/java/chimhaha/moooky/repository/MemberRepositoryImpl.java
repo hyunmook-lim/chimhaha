@@ -34,13 +34,19 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
-    public Member findByEmail(String email) {
-        return em.find(Member.class, email);
+    public List<Member> findByEmail(String email) {
+        String query = "select m from Member m where m.email=:email";
+
+        List<Member> sameEmail = em.createQuery(query).setParameter("email", email).getResultList();
+
+        return sameEmail;
     }
 
     @Override
-    public Member findByNickname(String nickname) {
-        return em.find(Member.class, nickname);
+    public List<Member> findByNickname(String nickname) {
+        String query = "select m from Member m where m.nickname=:nickname";
+        List<Member> sameNickname = em.createQuery(query).setParameter("nickname", nickname).getResultList();
+        return sameNickname;
     }
 
     @Override
