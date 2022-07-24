@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
-import theme from "../data/theme";
 import { Header, MenuBar, Footer } from "./components";
 import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
@@ -29,10 +28,9 @@ const Container = styled.div`
 
 export default function Signup() {
   const [gender, setGender] = useState("");
-
-  function genderClick(event) {
-    setGender(event.target.value);
-  }
+  const [birthYear, setBirthYear] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [birthDay, setBirthDay] = useState("");
 
   return (
     <View>
@@ -90,25 +88,44 @@ export default function Signup() {
             id="demo-simple-select"
             value={gender}
             label="성별"
-            onChange={genderClick}
+            onChange={(e) => {
+              setGender(e.target.value);
+            }}
           >
             <MenuItem value={10}>남성</MenuItem>
             <MenuItem value={20}>여성</MenuItem>
           </Select>
         </FormControl>
-        <Button
-          sx={{
-            width: 120,
-            marginTop: 3,
-            marginBottom: 5,
-            color: "black",
-            borderColor: "lightgray",
-            borderWidth: 1.5,
-          }}
-          variant="outlined"
-        >
-          가입하기
-        </Button>
+        <FormControl sx={{ width: 250, marginTop: 3, marginBottom: 3 }}>
+          <InputLabel id="demo-simple-select-label">출생연도</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={birthYear}
+            label="출생연도"
+            onChange={(e) => {
+              setBirthYear(e.target.value);
+            }}
+          >
+            <MenuItem value={10}>남성</MenuItem>
+            <MenuItem value={20}>여성</MenuItem>
+          </Select>
+        </FormControl>
+        <Link to={"#"} style={{ textDecoration: "none" }}>
+          <Button
+            sx={{
+              width: 100,
+              marginTop: 3,
+              marginBottom: 5,
+              color: "black",
+              borderColor: "lightgray",
+              borderWidth: 1.5,
+            }}
+            variant="outlined"
+          >
+            가입하기
+          </Button>
+        </Link>
       </Container>
       <Footer />
     </View>

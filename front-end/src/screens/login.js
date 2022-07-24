@@ -78,6 +78,8 @@ export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [signupNickname, setSignupNickname] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
 
   // 로그인 버튼 클릭
   function loginButtonClick() {
@@ -226,6 +228,10 @@ export default function Login() {
                 id="outlined-basic"
                 label="닉네임"
                 variant="outlined"
+                onChange={(e) => {
+                  setSignupNickname(e.target.value);
+                }}
+                value={signupNickname}
               />
               <TextField
                 sx={{
@@ -245,6 +251,10 @@ export default function Login() {
                 id="outlined-basic"
                 label="이메일"
                 variant="outlined"
+                onChange={(e) => {
+                  setSignupEmail(e.target.value);
+                }}
+                value={signupEmail}
               />
 
               <Link to="/signup" style={{ textDecoration: "none" }}>
