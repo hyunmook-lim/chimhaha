@@ -73,7 +73,7 @@ const LoginSignupContainer = styled.div`
   width: 100%;
 `;
 
-export default function Login() {
+export default function Login_Test() {
   const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(true);
   const [loginEmail, setLoginEmail] = useState("");
@@ -147,13 +147,21 @@ export default function Login() {
                   width: 250,
                   "& .MuiOutlinedInput-root": {
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
+                      borderColor: "white",
                     },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
                     "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
+                      borderColor: "skyblue",
                     },
                   },
+                  label: { color: "white" },
                 }}
                 id="outlined-basic"
                 label="이메일"
@@ -171,13 +179,21 @@ export default function Login() {
                   width: 250,
                   "& .MuiOutlinedInput-root": {
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
+                      borderColor: "white",
                     },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
                     "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
+                      borderColor: "skyblue",
                     },
                   },
+                  label: { color: "white" },
                 }}
                 id="outlined-password"
                 type="password"
@@ -188,16 +204,14 @@ export default function Login() {
                 }}
                 value={loginPassword}
               />
-              <Link to="../" style={{ textDecoration: "none" }}>
+              <Link to="../">
                 <Button
                   sx={{
                     width: 80,
                     marginTop: 3,
                     marginBottom: 5,
-                    textDecoration: "none",
-                    color: "black",
-                    borderColor: "black",
-                    borderWidth: 1.5,
+                    color: "white",
+                    borderColor: "white",
                   }}
                   variant="outlined"
                   onClick={loginButtonClick}
@@ -211,17 +225,25 @@ export default function Login() {
               <TextField
                 sx={{
                   marginTop: 5,
-                  marginBottom: 3,
+                  marginBottom: 2,
                   width: 250,
                   "& .MuiOutlinedInput-root": {
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
+                      borderColor: "white",
                     },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
                     "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
+                      borderColor: "skyblue",
                     },
                   },
+                  label: { color: "white" },
                 }}
                 id="outlined-basic"
                 label="닉네임"
@@ -229,33 +251,95 @@ export default function Login() {
               />
               <TextField
                 sx={{
-                  marginTop: 3,
-                  marginBottom: 3,
+                  marginTop: 2,
+                  marginBottom: 2,
                   width: 250,
                   "& .MuiOutlinedInput-root": {
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
+                      borderColor: "white",
                     },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
                     "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
+                      borderColor: "skyblue",
                     },
                   },
+                  label: { color: "white" },
                 }}
                 id="outlined-basic"
                 label="이메일"
                 variant="outlined"
               />
-
+              <TextField
+                sx={{
+                  marginTop: 2,
+                  marginBottom: 2,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
+                  },
+                  label: { color: "white" },
+                }}
+                id="outlined-password"
+                type="password"
+                label="비밀번호"
+                variant="outlined"
+              />
+              <TextField
+                sx={{
+                  marginTop: 2,
+                  marginBottom: 3,
+                  width: 250,
+                  "& .MuiOutlinedInput-root": {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&. Mui-hover": {
+                      borderColor: "white",
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": { borderColor: "white" },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "skyblue",
+                    },
+                  },
+                  label: { color: "white" },
+                }}
+                id="outlined-password"
+                type="password"
+                label="비밀번호 확인"
+                variant="outlined"
+              />
               <Link to="/signup" style={{ textDecoration: "none" }}>
                 <Button
                   sx={{
                     width: 80,
                     marginTop: 3,
                     marginBottom: 5,
-                    color: "black",
-                    borderColor: "black",
-                    borderWidth: 1.5,
+                    color: "white",
+                    borderColor: "white",
                   }}
                   variant="outlined"
                 >

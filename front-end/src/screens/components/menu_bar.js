@@ -15,7 +15,7 @@ const ViewContainer = styled.div`
   width: 100%;
   margin: 0px;
   padding: 0px;
-  background-color: ${({ theme }) => theme.color.background_header};
+  background-color: ${({ theme }) => theme.color.background_menubar};
 `;
 
 const View = styled.div`

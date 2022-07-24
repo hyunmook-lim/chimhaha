@@ -38,10 +38,12 @@ const Title = styled.div`
 export default function Home1Header() {
   return (
     <View>
-      <TitleContainer to="/">
-        <Title>웃음의</Title>
-        <Title>알렉산드리아 도서관</Title>
-      </TitleContainer>
+      <Link to={"/"}>
+        <img
+          style={{ width: 600, margin: -10 }}
+          src="./images/main_logo.jpeg"
+        />
+      </Link>
     </View>
   );
 }
