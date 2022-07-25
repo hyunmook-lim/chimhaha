@@ -86,7 +86,7 @@ export default function Login() {
     dispatch(
       LoginAction({
         logined: true,
-        email: "email",
+        email: loginEmail,
         password: "password",
         name: "yook",
         nickname: "yoooook",

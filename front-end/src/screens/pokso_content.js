@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Header, MenuBar, Footer } from "./components/";
 import { PoksoDrawer, PoksoBody, ContentContainer } from "./pokso/";
 import "./pokso/pokso_content.css";
+import { TextField } from "@mui/material";
 
 const View = styled.div`
   display: flex;
@@ -14,7 +15,19 @@ const View = styled.div`
   width: 100%;
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-itmes: center;
+  justify-content: start;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
 export default function PoksoContent() {
+  const [title, setTitle] = useState("");
+
   return (
     <View>
       <Header />
@@ -22,6 +35,18 @@ export default function PoksoContent() {
       <PoksoBody>
         <PoksoDrawer />
         <ContentContainer>
+          <TitleContainer>
+            <TextField
+              sx={{ width: "800px" }}
+              id="outlined-basic"
+              label="제목"
+              variant="outlined"
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+          </TitleContainer>
           <CKEditor
             config={{
               placeholder: "글을 입력해보세요!",

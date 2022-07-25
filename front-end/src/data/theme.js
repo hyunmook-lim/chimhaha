@@ -1,5 +1,3 @@
-import { rgbToHex } from "@mui/material";
-
 const theme = {
   color: {
     background: "rgb(255,255,255)",
@@ -21,6 +19,7 @@ const theme = {
     drawer_text: 14,
     normal_text: 14,
     title_text: 24,
+    content_title_text: 30,
     screen_width: 1100,
     mobile_screen_width: 1100,
   },
