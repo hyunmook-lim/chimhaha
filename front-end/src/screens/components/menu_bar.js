@@ -94,8 +94,6 @@ export default function MenuBar({ home, pokso }) {
     return { login_info: state.login_info };
   });
 
-  console.log(login_info);
-
   return (
     <ViewContainer>
       <View>

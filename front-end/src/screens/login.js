@@ -96,9 +96,6 @@ export default function Login() {
     );
   }
 
-  console.log(`email: ${loginEmail}`);
-  console.log(`password: ${loginPassword}`);
-
   return (
     <View>
       <Header />
@@ -257,7 +254,11 @@ export default function Login() {
                 value={signupEmail}
               />
 
-              <Link to="/signup" style={{ textDecoration: "none" }}>
+              <Link
+                to={"/signup"}
+                state={{ signupEmail, signupNickname }}
+                style={{ textDecoration: "none" }}
+              >
                 <Button
                   sx={{
                     width: 80,

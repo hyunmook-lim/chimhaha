@@ -124,12 +124,59 @@ const ListItemLike = styled.div`
   text-align: center;
 `;
 
+const ListTopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 12px 20px;
+  justify-content: space-between;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const SearchInput = styled.input`
+  width: 200px;
+  height: 30px;
+`;
+
+const SearchButton = styled.button`
+  width: 48px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.color.header_background};
+  color: black;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`;
+
+const MakeContentButton = styled.button`
+  width: 60px;
+  height: 36px;
+  background-color: ${({ theme }) => theme.color.header_background};
+  color: black;
+  text-align: center;
+  margin-right: 40px;
+`;
+
 export default function Pokso1() {
   var test_list = [1, 2, 3, 4, 5];
   return (
     <View>
       <List>
         <ListTitle>폭소1</ListTitle>
+        <ListTopContainer>
+          <SearchContainer>
+            <SearchInput placeholder="검색어를 입력하세요" />
+
+            <SearchButton>검색</SearchButton>
+          </SearchContainer>
+          <Link to="board">
+            <MakeContentButton>글쓰기</MakeContentButton>
+          </Link>
+        </ListTopContainer>
         <ListHeader>
           <ListHeaderTitle>제목</ListHeaderTitle>
           <ListHeaderName>작성자</ListHeaderName>

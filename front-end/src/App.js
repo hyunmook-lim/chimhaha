@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Home, Login, Pokso, PoksoContent, Signup } from "./screens";
+import { Home, Login, Pokso, PoksoContentEdit, Signup } from "./screens";
 import theme from "./data/theme";
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -23,7 +23,8 @@ export default function App() {
             <Route path="/login/*" element={<Login />} />
             <Route path="/signup/*" element={<Signup />} />
             <Route path="/pokso" element={<Pokso />} />
-            <Route path="/pokso/:no" element={<PoksoContent />} />
+            <Route path="/pokso/board" element={<PoksoContentEdit />} />
+            <Route path="/pokso/:no" element={<PoksoContentEdit />} />
             {/* 사전에 정의하지 않은 주소 입력시 */}
             <Route path="*" element={<Home />} />
           </Routes>

@@ -12,10 +12,6 @@ const View = styled.div`
   margin: 8px;
   padding: 5px;
   min-height: 500px;
-  h1 {
-    color: white;
-    white-space: nowrap;
-  }
 `;
 
 export default function ContentContainer({ children }) {

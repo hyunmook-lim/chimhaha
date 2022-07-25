@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { Header, MenuBar, Footer } from "./components/";
-import { PoksoDrawer, PoksoBody, ContentContainer } from "./pokso/";
+import { MenuBar, Footer, Header } from "./components";
+import PoksoBody from "./pokso/pokso_body";
+import PoksoDrawer from "./pokso/pokso_drawer";
+import ContentContainer from "./pokso/content_container";
 import "./pokso/pokso_content.css";
 import { TextField } from "@mui/material";
 
@@ -25,7 +27,7 @@ const TitleContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export default function PoksoContent() {
+export default function PoksoContentEdit() {
   const [title, setTitle] = useState("");
 
   return (

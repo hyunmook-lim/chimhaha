@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import logo from "../../data/images/main_logo.jpeg";
 
 const View = styled.div`
   display: flex;
@@ -13,16 +14,21 @@ const View = styled.div`
   padding-bottom: 20px;
 `;
 
+const TitleLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 export default function Home1Header() {
   return (
     <View>
-      <Link to={"/"}>
+      <TitleLink to={"/"}>
         <img
           style={{ width: 600, margin: -10 }}
-          src="./images/main_logo.jpeg"
+          src={logo}
           alt="chimhaha_main_logo"
         />
-      </Link>
+      </TitleLink>
     </View>
   );
 }

@@ -124,6 +124,43 @@ const ListItemLike = styled.div`
   text-align: center;
 `;
 
+const ListTopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 12px 20px;
+  justify-content: space-between;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const SearchInput = styled.input`
+  width: 200px;
+  height: 30px;
+`;
+
+const SearchButton = styled.button`
+  width: 48px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.color.header_background};
+  color: black;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`;
+
+const MakeContentButton = styled.button`
+  width: 60px;
+  height: 36px;
+  background-color: ${({ theme }) => theme.color.header_background};
+  color: black;
+  text-align: center;
+  margin-right: 40px;
+`;
+
 export default function Pokso2() {
   const test_list = [1, 2];
   return (

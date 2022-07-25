@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
 import { Header, MenuBar, Footer } from "./components";
 import Button from "@mui/material/Button";
@@ -26,11 +26,44 @@ const Container = styled.div`
   margin: 20px 0px;
 `;
 
+var year_list = [];
+var month_list = [];
+var day_list = [];
+
+for (let i = 1900; i <= 2023; i++) {
+  year_list.push(i);
+}
+
+for (let i = 1; i <= 12; i++) {
+  month_list.push(i);
+}
+
+for (let i = 1; i <= 31; i++) {
+  day_list.push(i);
+}
+
 export default function Signup() {
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
   const [gender, setGender] = useState("");
   const [birthYear, setBirthYear] = useState("");
   const [birthMonth, setBirthMonth] = useState("");
   const [birthDay, setBirthDay] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setEmail(location.state.signupEmail);
+    setNickname(location.state.signupNickname);
+  }, []);
+
+  function _joinButtonClick() {
+    navigate("/");
+  }
 
   return (
     <View>
@@ -46,7 +79,7 @@ export default function Signup() {
           id="outlined-basic"
           label="이메일"
           variant="outlined"
-          value={"alsue2000@gmail.com"}
+          value={email}
           disabled={true}
         />
         <TextField
@@ -58,7 +91,7 @@ export default function Signup() {
           id="outlined-basic"
           label="닉네임"
           variant="outlined"
-          value={"육초코"}
+          value={nickname}
           disabled={true}
         />
         <TextField
@@ -70,6 +103,10 @@ export default function Signup() {
           id="outlined-basic"
           label="비밀번호"
           variant="outlined"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
         />
         <TextField
           sx={{
@@ -80,6 +117,10 @@ export default function Signup() {
           id="outlined-basic"
           label="비밀번호 확인"
           variant="outlined"
+          value={passwordConfirm}
+          onChange={(e) => {
+            setPasswordConfirm(e.target.value);
+          }}
         />
         <FormControl sx={{ width: 250, marginTop: 3, marginBottom: 3 }}>
           <InputLabel id="demo-simple-select-label">성별</InputLabel>
@@ -97,35 +138,67 @@ export default function Signup() {
           </Select>
         </FormControl>
         <FormControl sx={{ width: 250, marginTop: 3, marginBottom: 3 }}>
-          <InputLabel id="demo-simple-select-label">출생연도</InputLabel>
+          <InputLabel id="demo-simple-select-label">출생 연도</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={birthYear}
-            label="출생연도"
+            label="출생 연도"
             onChange={(e) => {
               setBirthYear(e.target.value);
             }}
           >
-            <MenuItem value={10}>남성</MenuItem>
-            <MenuItem value={20}>여성</MenuItem>
+            {year_list.map((text) => {
+              return <MenuItem value={text}>{text}</MenuItem>;
+            })}
           </Select>
         </FormControl>
-        <Link to={"#"} style={{ textDecoration: "none" }}>
-          <Button
-            sx={{
-              width: 100,
-              marginTop: 3,
-              marginBottom: 5,
-              color: "black",
-              borderColor: "lightgray",
-              borderWidth: 1.5,
+        <FormControl sx={{ width: 250, marginTop: 3, marginBottom: 3 }}>
+          <InputLabel id="demo-simple-select-label">출생 월</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={birthMonth}
+            label="출생 월"
+            onChange={(e) => {
+              setBirthMonth(e.target.value);
             }}
-            variant="outlined"
           >
-            가입하기
-          </Button>
-        </Link>
+            {month_list.map((text) => {
+              return <MenuItem value={text}>{text}</MenuItem>;
+            })}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ width: 250, marginTop: 3, marginBottom: 3 }}>
+          <InputLabel id="demo-simple-select-label">출생 일</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={birthDay}
+            label="출생 일"
+            onChange={(e) => {
+              setBirthDay(e.target.value);
+            }}
+          >
+            {day_list.map((text) => {
+              return <MenuItem value={text}>{text}</MenuItem>;
+            })}
+          </Select>
+        </FormControl>
+        <Button
+          sx={{
+            width: 100,
+            marginTop: 3,
+            marginBottom: 5,
+            color: "black",
+            borderColor: "lightgray",
+            borderWidth: 1.5,
+          }}
+          variant="outlined"
+          onClick={_joinButtonClick}
+        >
+          가입하기
+        </Button>
       </Container>
       <Footer />
     </View>
