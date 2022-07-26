@@ -23,11 +23,7 @@ export default function Home1Header() {
   return (
     <View>
       <TitleLink to={"/"}>
-        <img
-          style={{ width: 600, margin: -10 }}
-          src={logo}
-          alt="chimhaha_main_logo"
-        />
+        <img style={{ width: 160 }} src={logo} alt="chimhaha_main_logo" />
       </TitleLink>
     </View>
   );
