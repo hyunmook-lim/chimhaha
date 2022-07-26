@@ -117,11 +117,11 @@ export default function MenuBar({ home, pokso }) {
             }
           >
             {/* 폭소게시판 이동 */}
-            <MenuText to="/pokso">폭소게시판</MenuText>
+            <MenuText to="/pokso-board">폭소게시판</MenuText>
           </MenuButton>
           <MenuButton style={width < 440 ? { display: "none" } : {}}>
             {/* 자유 게시판 이동 */}
-            <MenuText to="#">자유 게시판</MenuText>
+            <MenuText to="free-board">자유 게시판</MenuText>
           </MenuButton>
 
           {/* width 줄어들시 더보기 메뉴 바 생성 */}

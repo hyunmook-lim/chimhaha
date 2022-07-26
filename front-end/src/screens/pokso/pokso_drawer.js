@@ -1,74 +1,65 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { List } from "@mui/material";
-import PoksoDrawerMenuItem from "../components/pokso_drawer_menu_item";
+import PoksoDrawerMenuItem from "./pokso_drawer_menu_item";
 import { PoksoPageNumAction } from "../../redux/actions/pokso_page_action";
 
 const View = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 190px;
-  margin: 50px 1px;
+  width: 150px;
+  margin: 50px 0px;
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Divider = styled.div`
   display: flex;
-  width: 100%;
+  width: 130%;
   height: 1.5px;
-  background-color: white;
-  opacity: 0.3;
+  background-color: gray;
+  opacity: 0.5;
 `;
 
 export default function PoksoDrawer() {
   const dispatch = useDispatch();
+
+  const menu_list1 = [1, 2, 3, 4, 5];
+  const menu_list2 = [6, 7, 8, 9, 10];
 
   return (
     <View>
       <List>
         <Divider />
 
-        <PoksoDrawerMenuItem
-          text={`폭소1`}
-          to="/pokso"
-          onClick={() => {
-            dispatch(PoksoPageNumAction(1));
-          }}
-        />
-        <PoksoDrawerMenuItem
-          text={`폭소2`}
-          to="/pokso"
-          onClick={() => {
-            dispatch(PoksoPageNumAction(2));
-          }}
-        />
-        <PoksoDrawerMenuItem
-          text={`폭소3`}
-          to="/pokso"
-          onClick={() => {
-            dispatch(PoksoPageNumAction(3));
-          }}
-        />
-        <PoksoDrawerMenuItem
-          text={`폭소4`}
-          to="/pokso"
-          onClick={() => {
-            dispatch(PoksoPageNumAction(4));
-          }}
-        />
+        {menu_list1.map((text) => {
+          return (
+            <PoksoDrawerMenuItem
+              text={`폭소${text}`}
+              to="/pokso-board"
+              onClick={() => {
+                dispatch(PoksoPageNumAction(text));
+              }}
+            />
+          );
+        })}
         <Divider />
-        <PoksoDrawerMenuItem
-          to="/pokso"
-          text={`폭소5`}
-          onClick={() => {
-            dispatch(PoksoPageNumAction(5));
-          }}
-        />
-        <PoksoDrawerMenuItem to="/pokso" text={`폭소6`} />
-        <PoksoDrawerMenuItem to="/pokso" text={`폭소7`} />
-        <PoksoDrawerMenuItem to="/pokso" text={`폭소8`} />
-
+        {menu_list2.map((text) => {
+          return (
+            <PoksoDrawerMenuItem
+              text={`폭소${text}`}
+              to="/pokso-board"
+              onClick={() => {
+                dispatch(PoksoPageNumAction(text));
+              }}
+            />
+          );
+        })}
         <Divider />
       </List>
     </View>

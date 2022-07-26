@@ -6,8 +6,8 @@ import { MenuBar, Footer, Header } from "./components";
 import PoksoBody from "./pokso/pokso_body";
 import PoksoDrawer from "./pokso/pokso_drawer";
 import ContentContainer from "./pokso/content_container";
-import "./pokso/pokso_content.css";
 import { TextField } from "@mui/material";
+import "./pokso/pokso_board_edit.css";
 
 const View = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ export default function PoksoContentEdit() {
         <ContentContainer>
           <TitleContainer>
             <TextField
-              sx={{ width: "800px" }}
+              sx={{ width: "100%" }}
               id="outlined-basic"
               label="제목"
               variant="outlined"
@@ -68,6 +68,7 @@ export default function PoksoContentEdit() {
             onFocus={(event, editor) => {
               console.log("Focus");
             }}
+            data="123"
           />
         </ContentContainer>
       </PoksoBody>

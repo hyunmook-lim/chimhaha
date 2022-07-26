@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header, MenuBar, Footer } from "./components";
 import theme from "../data/theme";
 import TextField from "@mui/material/TextField";
@@ -81,6 +81,8 @@ export default function Login() {
   const [signupNickname, setSignupNickname] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
 
+  const navigate = useNavigate();
+
   // 로그인 버튼 클릭
   function loginButtonClick() {
     dispatch(
@@ -94,6 +96,7 @@ export default function Login() {
         birthday: "960221",
       })
     );
+    navigate("/");
   }
 
   return (
@@ -187,23 +190,22 @@ export default function Login() {
                 }}
                 value={loginPassword}
               />
-              <Link to="../" style={{ textDecoration: "none" }}>
-                <Button
-                  sx={{
-                    width: 80,
-                    marginTop: 3,
-                    marginBottom: 5,
-                    textDecoration: "none",
-                    color: "black",
-                    borderColor: "black",
-                    borderWidth: 1.5,
-                  }}
-                  variant="outlined"
-                  onClick={loginButtonClick}
-                >
-                  로그인
-                </Button>
-              </Link>
+
+              <Button
+                sx={{
+                  width: 80,
+                  marginTop: 3,
+                  marginBottom: 5,
+                  textDecoration: "none",
+                  color: "black",
+                  borderColor: "black",
+                  borderWidth: 1.5,
+                }}
+                variant="outlined"
+                onClick={loginButtonClick}
+              >
+                로그인
+              </Button>
             </LoginSignupContainer>
           ) : (
             <LoginSignupContainer>
