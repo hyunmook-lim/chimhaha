@@ -37,6 +37,7 @@ public class BoardApiController {
      * 게시글 단 수 별 조회
      */
 //    @GetMapping("api/boards/{grade}")
+
     /**
      * 게시글 상세 조회
      */
