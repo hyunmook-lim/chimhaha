@@ -19,7 +19,7 @@ const theme = {
     menu_bar: 20,
     drawer_text: 18,
     normal_text: 14,
-    title_text: 38,
+    title_text: 34,
     content_title_text: 30,
     screen_width: 1100,
     drawer_width: 150,

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const title_width = 460;
+const title_width = 650;
 const name_width = 120;
 const date_width = 82;
 const view_width = 70;
@@ -179,15 +179,12 @@ const MakeContentButtonItem = styled.div`
   font-size: ${({ theme }) => theme.size.normal_text}px;
 `;
 
-export default function PoksoList({ page }) {
-  var test_list = [];
-  for (let i = 1; i <= 30; i++) {
-    test_list.push(i);
-  }
+export default function FreeList() {
+  var test_list = [1, 2, 3, 4, 5];
   return (
     <View>
       <List>
-        <ListTitle>폭소게시판 {page}</ListTitle>
+        <ListTitle>자유게시판</ListTitle>
         <ListTopContainer>
           <SearchContainer>
             <SearchInput placeholder="검색어를 입력하세요" />
@@ -214,9 +211,9 @@ export default function PoksoList({ page }) {
             <ListItemName key={`${text}_name`} to="#">
               육정수
             </ListItemName>
-            <ListItemDate key={`${text}_date`}>2022.07.{text}</ListItemDate>
+            <ListItemDate key={`${text}_date`}>2022.07.17</ListItemDate>
             <ListItemView key={`${text}_view`}>12</ListItemView>
-            <ListItemLike key={`${text}_like`}>{page}</ListItemLike>
+            <ListItemLike key={`${text}_like`}>{text}</ListItemLike>
           </ListItemContainer>
         ))}
       </List>

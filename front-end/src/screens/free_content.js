@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Header, MenuBar, Footer } from "./components";
-import { PoksoDrawer, PoksoBody, ContentContainer } from "./pokso";
+import { PoksoBody, ContentContainer } from "./pokso";
 
 const View = styled.div`
   display: flex;
@@ -73,13 +73,12 @@ const MainContent = styled.div`
   margin: 20px 0px;
 `;
 
-export default function PoksoContent() {
+export default function FreeContent() {
   return (
     <View>
       <Header />
-      <MenuBar pokso={true} />
+      <MenuBar free={true} />
       <PoksoBody>
-        <PoksoDrawer />
         <ContentContainer>
           <ContentView>
             <ContentHeader>

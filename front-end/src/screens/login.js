@@ -16,27 +16,10 @@ const View = styled.div`
   width: 100%;
 `;
 
-const Grid = styled.div`
-  display: grid;
-  flex;direction: column;
-  justify-content: center;
-  grid-template-columns: 650px 480px;
-  margin: 20px 0px;
-`;
-
-const Content = styled.div`
-  display: flex;
-  display-direction: column;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: ${({ theme }) => theme.size.mobile_screen_width}px) {
-    margin: 12px 5px;
-  }
-`;
-
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 380px;
   background-color: ${({ theme }) => theme.color.background_content};
   height: 600px;
   border-radius: 15px;
@@ -92,7 +75,7 @@ export default function Login() {
         password: "password",
         name: "yook",
         nickname: "yoooook",
-        sex: "male",
+        gender: "male",
         birthday: "960221",
       })
     );
@@ -103,182 +86,174 @@ export default function Login() {
     <View>
       <Header />
       <MenuBar />
-      <Grid>
-        <Content>
-          <img
-            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png"
-            alt="logo"
-            style={{ width: 300 }}
-          />
-        </Content>
-        <LoginContainer>
-          <SelectButtonContainer>
-            <SelectButton
-              to="#"
-              onClick={() => {
-                setIsLogin(true);
+
+      <LoginContainer>
+        <SelectButtonContainer>
+          <SelectButton
+            to="#"
+            onClick={() => {
+              setIsLogin(true);
+            }}
+            style={{
+              backgroundColor: isLogin
+                ? theme.color.background_content
+                : theme.color.background_login,
+            }}
+          >
+            로그인
+          </SelectButton>
+          <SelectButton
+            to="#"
+            onClick={() => {
+              setIsLogin(false);
+            }}
+            style={{
+              backgroundColor: isLogin
+                ? theme.color.background_login
+                : theme.color.background_content,
+            }}
+          >
+            회원가입
+          </SelectButton>
+        </SelectButtonContainer>
+        {isLogin ? (
+          <LoginSignupContainer>
+            <TextField
+              sx={{
+                marginTop: 5,
+                marginBottom: 3,
+                width: 250,
+                "& .MuiOutlinedInput-root": {
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                    borderWidth: 1.5,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.color.text_field_color,
+                  },
+                },
               }}
-              style={{
-                backgroundColor: isLogin
-                  ? theme.color.background_content
-                  : theme.color.background_login,
+              id="outlined-basic"
+              label="이메일"
+              variant="outlined"
+              autoFocus={true}
+              onChange={(e) => {
+                setLoginEmail(e.target.value);
               }}
+              value={loginEmail}
+            />
+            <TextField
+              sx={{
+                marginTop: 3,
+                marginBottom: 3,
+                width: 250,
+                "& .MuiOutlinedInput-root": {
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                    borderWidth: 1.5,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.color.text_field_color,
+                  },
+                },
+              }}
+              id="outlined-password"
+              type="password"
+              label="비밀번호"
+              variant="outlined"
+              onChange={(e) => {
+                setLoginPassword(e.target.value);
+              }}
+              value={loginPassword}
+            />
+
+            <Button
+              sx={{
+                width: 80,
+                marginTop: 3,
+                marginBottom: 5,
+                textDecoration: "none",
+                color: "black",
+                borderColor: "black",
+                borderWidth: 1.5,
+              }}
+              variant="outlined"
+              onClick={loginButtonClick}
             >
               로그인
-            </SelectButton>
-            <SelectButton
-              to="#"
-              onClick={() => {
-                setIsLogin(false);
-              }}
-              style={{
-                backgroundColor: isLogin
-                  ? theme.color.background_login
-                  : theme.color.background_content,
-              }}
-            >
-              회원가입
-            </SelectButton>
-          </SelectButtonContainer>
-          {isLogin ? (
-            <LoginSignupContainer>
-              <TextField
-                sx={{
-                  marginTop: 5,
-                  marginBottom: 3,
-                  width: 250,
-                  "& .MuiOutlinedInput-root": {
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
-                    },
+            </Button>
+          </LoginSignupContainer>
+        ) : (
+          <LoginSignupContainer>
+            <TextField
+              sx={{
+                marginTop: 5,
+                marginBottom: 3,
+                width: 250,
+                "& .MuiOutlinedInput-root": {
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                    borderWidth: 1.5,
                   },
-                }}
-                id="outlined-basic"
-                label="이메일"
-                variant="outlined"
-                autoFocus={true}
-                onChange={(e) => {
-                  setLoginEmail(e.target.value);
-                }}
-                value={loginEmail}
-              />
-              <TextField
-                sx={{
-                  marginTop: 3,
-                  marginBottom: 3,
-                  width: 250,
-                  "& .MuiOutlinedInput-root": {
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
-                    },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.color.text_field_color,
                   },
-                }}
-                id="outlined-password"
-                type="password"
-                label="비밀번호"
-                variant="outlined"
-                onChange={(e) => {
-                  setLoginPassword(e.target.value);
-                }}
-                value={loginPassword}
-              />
+                },
+              }}
+              id="outlined-basic"
+              label="닉네임"
+              variant="outlined"
+              onChange={(e) => {
+                setSignupNickname(e.target.value);
+              }}
+              value={signupNickname}
+            />
+            <TextField
+              sx={{
+                marginTop: 3,
+                marginBottom: 3,
+                width: 250,
+                "& .MuiOutlinedInput-root": {
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                    borderWidth: 1.5,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.color.text_field_color,
+                  },
+                },
+              }}
+              id="outlined-basic"
+              label="이메일"
+              variant="outlined"
+              onChange={(e) => {
+                setSignupEmail(e.target.value);
+              }}
+              value={signupEmail}
+            />
 
+            <Link
+              to={"/signup"}
+              state={{ signupEmail, signupNickname }}
+              style={{ textDecoration: "none" }}
+            >
               <Button
                 sx={{
                   width: 80,
                   marginTop: 3,
                   marginBottom: 5,
-                  textDecoration: "none",
                   color: "black",
                   borderColor: "black",
                   borderWidth: 1.5,
                 }}
                 variant="outlined"
-                onClick={loginButtonClick}
               >
-                로그인
+                가입
               </Button>
-            </LoginSignupContainer>
-          ) : (
-            <LoginSignupContainer>
-              <TextField
-                sx={{
-                  marginTop: 5,
-                  marginBottom: 3,
-                  width: 250,
-                  "& .MuiOutlinedInput-root": {
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
-                    },
-                  },
-                }}
-                id="outlined-basic"
-                label="닉네임"
-                variant="outlined"
-                onChange={(e) => {
-                  setSignupNickname(e.target.value);
-                }}
-                value={signupNickname}
-              />
-              <TextField
-                sx={{
-                  marginTop: 3,
-                  marginBottom: 3,
-                  width: 250,
-                  "& .MuiOutlinedInput-root": {
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                      borderWidth: 1.5,
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: theme.color.text_field_color,
-                    },
-                  },
-                }}
-                id="outlined-basic"
-                label="이메일"
-                variant="outlined"
-                onChange={(e) => {
-                  setSignupEmail(e.target.value);
-                }}
-                value={signupEmail}
-              />
-
-              <Link
-                to={"/signup"}
-                state={{ signupEmail, signupNickname }}
-                style={{ textDecoration: "none" }}
-              >
-                <Button
-                  sx={{
-                    width: 80,
-                    marginTop: 3,
-                    marginBottom: 5,
-                    color: "black",
-                    borderColor: "black",
-                    borderWidth: 1.5,
-                  }}
-                  variant="outlined"
-                >
-                  가입
-                </Button>
-              </Link>
-            </LoginSignupContainer>
-          )}
-        </LoginContainer>
-      </Grid>
+            </Link>
+          </LoginSignupContainer>
+        )}
+      </LoginContainer>
       <Footer />
     </View>
   );

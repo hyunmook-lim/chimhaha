@@ -87,7 +87,7 @@ const LoginButton = styled(Link)`
   color: ${({ theme }) => theme.color.normal_text};
 `;
 
-export default function MenuBar({ home, pokso }) {
+export default function MenuBar({ home, pokso, free }) {
   const width = useWindowDimensions().width;
   const dispatch = useDispatch();
   const { login_info } = useSelector((state) => {
@@ -106,6 +106,7 @@ export default function MenuBar({ home, pokso }) {
           >
             <MenuText to="/">Home</MenuText>
           </MenuButton>
+          {/* 폭소게시판 이동 */}
           <MenuButton
             style={
               width < 360
@@ -116,11 +117,19 @@ export default function MenuBar({ home, pokso }) {
                   }
             }
           >
-            {/* 폭소게시판 이동 */}
             <MenuText to="/pokso-board">폭소게시판</MenuText>
           </MenuButton>
-          <MenuButton style={width < 440 ? { display: "none" } : {}}>
-            {/* 자유 게시판 이동 */}
+          {/* 자유 게시판 이동 */}
+          <MenuButton
+            style={
+              width < 440
+                ? { display: "none" }
+                : {
+                    borderBottom: free ? "3px black solid" : "",
+                    marginBottom: free ? 0 : 3,
+                  }
+            }
+          >
             <MenuText to="/free-board">자유 게시판</MenuText>
           </MenuButton>
 
@@ -169,7 +178,7 @@ export default function MenuBar({ home, pokso }) {
         </Container>
         {login_info.logined ? (
           <LoginButtonContainer>
-            <LoginButton to="/login" style={{ marginRight: 12 }}>
+            <LoginButton to="/my-info" style={{ marginRight: 12 }}>
               내정보
             </LoginButton>
             <LoginButton

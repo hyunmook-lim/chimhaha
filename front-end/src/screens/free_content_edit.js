@@ -27,13 +27,13 @@ const TitleContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export default function PoksoContentEdit() {
+export default function FreeContentEdit() {
   const [title, setTitle] = useState("");
 
   return (
     <View>
       <Header />
-      <MenuBar pokso={true} />
+      <MenuBar free={true} />
       <PoksoBody>
         <PoksoDrawer />
         <ContentContainer>

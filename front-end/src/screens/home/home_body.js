@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const mobile_screen_size = 1200;
+const mobile_screen_size = 1100;
 
 const View = styled.div`
   display: flex;

@@ -5,6 +5,6 @@ export const LoginAction = (data) => ({
   password: data.password,
   name: data.name,
   nickname: data.nickname,
-  sex: data.sex,
+  gender: data.gender,
   birthday: data.birthday,
 });

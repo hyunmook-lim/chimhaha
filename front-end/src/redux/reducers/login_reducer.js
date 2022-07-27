@@ -7,7 +7,7 @@ export default function LoginReducer(state = initialState, action) {
         password: action.password,
         name: action.name,
         nickname: action.nickname,
-        sex: action.sex,
+        gender: action.gender,
         birthday: action.birthday,
       };
 
@@ -22,6 +22,6 @@ const initialState = {
   password: "",
   name: "",
   nickname: "",
-  sex: "",
+  gender: "",
   birthday: "",
 };
