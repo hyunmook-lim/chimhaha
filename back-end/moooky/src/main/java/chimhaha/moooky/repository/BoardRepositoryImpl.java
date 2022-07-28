@@ -27,12 +27,6 @@ public class BoardRepositoryImpl implements BoardRepository {
     }
 
     @Override
-    public List<Board> findAll() {
-        return em.createQuery("select b from Board b", Board.class)
-                .getResultList();
-    }
-
-    @Override
     public List<Board> findByGrade(Grade grade) {
         String query = "select b from Board b where b.grade=:grade";
 

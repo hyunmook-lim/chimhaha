@@ -3,14 +3,17 @@ package chimhaha.moooky.apiController;
 import chimhaha.moooky.domain.Board;
 import chimhaha.moooky.domain.Comment;
 import chimhaha.moooky.domain.Member;
+import chimhaha.moooky.enums.Grade;
 import chimhaha.moooky.service.BoardServiceImpl;
 import chimhaha.moooky.service.MemberServiceImpl;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,13 +39,23 @@ public class BoardApiController {
     /**
      * 게시글 단 수 별 조회
      */
-//    @GetMapping("api/boards/{grade}")
+    @GetMapping("api/boards/{grade}")
+    public FindResult findBoards(@PathVariable("grade") Grade grade) {
+
+        List<Board> findBoards = boardService.GradeBoards(grade);
+
+        List<FindBoardsResponse> collect = findBoards.stream()
+                .map(m -> new FindBoardsResponse(m.getMember().getNickname(), m.getTitle(), m.getHitTimes(), m.getLikes()))
+                .collect(Collectors.toList());
+
+        return new FindResult(collect);
+    }
 
     /**
      * 게시글 상세 조회
      */
-    @GetMapping("api/boards/{id}")
-    public DetailBoardResponse detailBoard(@PathVariable("id") Long id) {
+    @GetMapping("api/boards/{grade}/{id}")
+    public DetailBoardResponse detailBoard(@PathVariable("grade") Grade grade, @PathVariable("id") Long id) {
         Board board = boardService.findOneBoard(id);
         board.addHitTimes();
 
@@ -85,8 +98,35 @@ public class BoardApiController {
         }
     }
 
+    /**
+     * 게시글 리스트 조회
+     */
     @Data
-    @RequiredArgsConstructor
+    private class FindBoardsResponse {
+        private String memberNickname;
+
+        private String title;
+
+        private Integer hitTimes;
+
+        private Integer likes;
+
+        public FindBoardsResponse(String memberNickname, String title, Integer hitTimes, Integer likes) {
+            this.memberNickname = memberNickname;
+            this.title = title;
+            this.hitTimes = hitTimes;
+            this.likes = likes;
+        }
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class FindResult<T> {
+        private T data;
+    }
+
+
+    @Data
     private class DetailBoardResponse {
         Long boardId;
 
