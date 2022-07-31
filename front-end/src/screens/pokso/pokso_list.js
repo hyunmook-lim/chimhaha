@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const title_width = 460;
+const title_width = 530;
 const name_width = 120;
 const date_width = 82;
 const view_width = 70;
@@ -181,13 +181,15 @@ const MakeContentButtonItem = styled.div`
 
 export default function PoksoList({ page }) {
   var test_list = [];
+
   for (let i = 1; i <= 30; i++) {
     test_list.push(i);
   }
+
   return (
     <View>
       <List>
-        <ListTitle>폭소게시판 {page}</ListTitle>
+        <ListTitle>{page} 게시판</ListTitle>
         <ListTopContainer>
           <SearchContainer>
             <SearchInput placeholder="검색어를 입력하세요" />
@@ -216,7 +218,7 @@ export default function PoksoList({ page }) {
             </ListItemName>
             <ListItemDate key={`${text}_date`}>2022.07.{text}</ListItemDate>
             <ListItemView key={`${text}_view`}>12</ListItemView>
-            <ListItemLike key={`${text}_like`}>{page}</ListItemLike>
+            <ListItemLike key={`${text}_like`}>{2}</ListItemLike>
           </ListItemContainer>
         ))}
       </List>

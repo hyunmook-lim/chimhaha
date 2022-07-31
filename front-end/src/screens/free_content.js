@@ -91,7 +91,7 @@ export default function FreeContent() {
                 </WriterTextContainer>
               </WriterContainer>
             </ContentHeader>
-            <MainContent>{}</MainContent>
+            <MainContent></MainContent>
           </ContentView>
         </ContentContainer>
       </PoksoBody>

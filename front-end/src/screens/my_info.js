@@ -17,22 +17,34 @@ const Container = styled.div`
   align-items: center;
   justify-content: start;
   width: ${({ theme }) => theme.size.screen_width}px;
+  margin: 20px 0px;
 
   @media (max-width: ${({ theme }) => theme.size.mobile_screen_width}px) {
     width: 94%;
   }
 `;
 
-const EmailContainer = styled.div`
+const ItemContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: start;
+  margin: 10px 0px;
 `;
 
-const EmailInput = styled.input`
-  width: 200px;
+const ItemText = styled.div`
+  font-size: ${({ theme }) => theme.size.normal_text}px
+  color: black;
+  margin-right: 10px;
+  width: 80px;
+  text-align: center;
+`;
+
+const ItemInput = styled.input`
+  width: 180px;
   height: 25px;
   font-size: ${({ theme }) => theme.size.normal_text}px;
+  margin-left: 10px;
 `;
 
 export default function MyInfo() {
@@ -45,10 +57,26 @@ export default function MyInfo() {
       <Header />
       <MenuBar />
       <Container>
-        <EmailContainer>
-          제목
-          <EmailInput disabled={true} value={login_info.email} />
-        </EmailContainer>
+        <ItemContainer>
+          <ItemText>이메일</ItemText>
+          <ItemInput disabled={true} value={login_info.email} />
+        </ItemContainer>
+        <ItemContainer>
+          <ItemText>이름</ItemText>
+          <ItemInput disabled={true} value={login_info.birthday} />
+        </ItemContainer>
+        <ItemContainer>
+          <ItemText>닉네임</ItemText>
+          <ItemInput disabled={true} value={login_info.nickname} />
+        </ItemContainer>
+        <ItemContainer>
+          <ItemText>생년월일</ItemText>
+          <ItemInput disabled={true} value={login_info.birthday} />
+        </ItemContainer>
+        <ItemContainer>
+          <ItemText>성별</ItemText>
+          <ItemInput disabled={true} value={login_info.gender} />
+        </ItemContainer>
       </Container>
       <Footer />
     </View>

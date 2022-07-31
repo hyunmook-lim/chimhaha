@@ -7,7 +7,9 @@ import PoksoBody from "./pokso/pokso_body";
 import PoksoDrawer from "./pokso/pokso_drawer";
 import ContentContainer from "./pokso/content_container";
 import { TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "./pokso/pokso_board_edit.css";
+import HTMLParse from "../utils/get_html_parse";
 
 const View = styled.div`
   display: flex;
@@ -27,8 +29,33 @@ const TitleContainer = styled.div`
   margin-bottom: 20px;
 `;
 
+const SaveButtonContainer = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 30px;
+  background-color: ${({ theme }) => theme.color.background_button};
+  color: ${({ theme }) => theme.color.button};
+  text-decoration: none;
+  margin: 20px 0px;
+`;
+
+const SaveButton = styled.div`
+  font-size: ${({ theme }) => theme.size.normal_text}px;
+  text-align: center;
+  font-weight: bold;
+`;
+
 export default function PoksoContentEdit() {
   const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const navigate = useNavigate();
+
+  function _clickSaveButton() {
+    navigate("/free-board");
+  }
 
   return (
     <View>
@@ -60,7 +87,7 @@ export default function PoksoContentEdit() {
             }}
             onChange={(event, editor) => {
               const data = editor.getData();
-              console.log(data);
+              setContent(data);
             }}
             onBlur={(event, editor) => {
               console.log("Blur");
@@ -69,6 +96,10 @@ export default function PoksoContentEdit() {
               console.log("Focus");
             }}
           />
+          <SaveButtonContainer href="#" onClick={_clickSaveButton}>
+            <SaveButton>저장</SaveButton>
+          </SaveButtonContainer>
+          <div>{HTMLParse(content)}</div>
         </ContentContainer>
       </PoksoBody>
       <Footer />
