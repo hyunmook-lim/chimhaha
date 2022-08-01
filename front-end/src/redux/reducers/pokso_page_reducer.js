@@ -8,4 +8,4 @@ export default function PoksoPageNumReducer(state = initialState, action) {
   }
 }
 
-const initialState = 1;
+const initialState = "초단";

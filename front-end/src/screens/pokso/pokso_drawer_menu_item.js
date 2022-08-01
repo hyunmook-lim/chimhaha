@@ -12,7 +12,7 @@ const ListLink = styled(Link)`
 
 export default function PoksoDrawerMenuItem({ text, onClick, to }) {
   return (
-    <ListItem key={text} style={{ padding: 1.5 }}>
+    <ListItem key={text} style={{ padding: 1.5, justifyContent: "center" }}>
       <ListLink to={to} onClick={onClick}>
         {text}
       </ListLink>
