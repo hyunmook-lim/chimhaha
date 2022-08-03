@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { Header, MenuBar, Footer } from "./components";
-import axios from "axios";
 
 const View = styled.div`
   display: flex;
@@ -52,22 +51,6 @@ export default function MyInfo() {
   const { login_info } = useSelector((state) => {
     return { login_info: state.login_info };
   });
-
-  const [test, setTest] = useState("");
-  useEffect(() => {
-    async function fetchTest() {
-      try {
-        const response = await axios
-          .get("http://localhost:8080/api/members/1")
-          .then(setTest(response.data));
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    fetchTest();
-  });
-
-  console.log(test);
 
   return (
     <View>
