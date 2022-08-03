@@ -4,6 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+###로그인 정보를 보호하기 위한 gitignore###
+application-oauth.yml
 
 ### STS ###
 .apt_generated
