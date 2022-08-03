@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -33,8 +33,9 @@ const SaveButtonContainer = styled.a`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 65px;
-  height: 30px;
+  width: 75px;
+  height: 35px;
+  border-radius: 7px;
   background-color: ${({ theme }) => theme.color.background_button};
   color: ${({ theme }) => theme.color.button};
   text-decoration: none;
@@ -55,6 +56,10 @@ export default function FreeContentEdit() {
   function _clickSaveButton() {
     navigate("/free-board");
   }
+
+  useEffect(() => {
+    console.log(HTMLParse(content));
+  }, []);
 
   return (
     <View>
@@ -97,7 +102,6 @@ export default function FreeContentEdit() {
           <SaveButtonContainer href="#" onClick={_clickSaveButton}>
             <SaveButton>저장</SaveButton>
           </SaveButtonContainer>
-          <div>{HTMLParse(content)}</div>
         </ContentContainer>
       </PoksoBody>
       <Footer />

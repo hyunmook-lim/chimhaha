@@ -30,7 +30,7 @@ export default function PoksoDrawer() {
   const dispatch = useDispatch();
 
   const menu_list1 = ["초단", "2단", "3단", "4단", "5단"];
-  const menu_list2 = ["6단", "7딘", "8단", "9단", "노잼"];
+  const menu_list2 = ["6단", "7단", "8단", "9단", "노잼"];
 
   return (
     <View>

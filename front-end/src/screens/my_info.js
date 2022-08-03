@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { Header, MenuBar, Footer } from "./components";
-import axios from "axios";
 
 const View = styled.div`
   display: flex;
@@ -53,22 +52,6 @@ export default function MyInfo() {
     return { login_info: state.login_info };
   });
 
-  const [test, setTest] = useState("");
-  useEffect(() => {
-    async function fetchTest() {
-      try {
-        const response = await axios
-          .get("http://localhost:8080/api/members/1")
-          .then(setTest(response.data));
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    fetchTest();
-  });
-
-  console.log(test);
-
   return (
     <View>
       <Header />
@@ -80,7 +63,7 @@ export default function MyInfo() {
         </ItemContainer>
         <ItemContainer>
           <ItemText>이름</ItemText>
-          <ItemInput disabled={true} value={login_info.birthday} />
+          <ItemInput disabled={true} value={login_info.name} />
         </ItemContainer>
         <ItemContainer>
           <ItemText>닉네임</ItemText>
@@ -88,11 +71,23 @@ export default function MyInfo() {
         </ItemContainer>
         <ItemContainer>
           <ItemText>생년월일</ItemText>
-          <ItemInput disabled={true} value={login_info.birthday} />
+          <ItemInput
+            disabled={true}
+            value={`19${login_info.birthday.slice(
+              0,
+              2
+            )}년 ${login_info.birthday.slice(
+              2,
+              4
+            )}월 ${login_info.birthday.slice(4, 6)}일`}
+          />
         </ItemContainer>
         <ItemContainer>
           <ItemText>성별</ItemText>
-          <ItemInput disabled={true} value={login_info.gender} />
+          <ItemInput
+            disabled={true}
+            value={login_info.gender === "male" ? "남성" : "여성"}
+          />
         </ItemContainer>
       </Container>
       <Footer />
