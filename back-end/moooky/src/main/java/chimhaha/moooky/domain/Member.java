@@ -43,6 +43,7 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
+    @Enumerated(value = EnumType.STRING)
     private Authority authority;
     //== 연관관계 메서드 ==//
 

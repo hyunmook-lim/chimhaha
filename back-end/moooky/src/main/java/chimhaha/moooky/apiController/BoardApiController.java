@@ -57,7 +57,8 @@ public class BoardApiController {
     @GetMapping("api/boards/{grade}/{id}")
     public DetailBoardResponse detailBoard(@PathVariable("grade") Grade grade, @PathVariable("id") Long id) {
         Board board = boardService.findOneBoard(id);
-//        board.addHitTimes();
+        board.addHitTimes();
+
 
         String memberNickname = board.getMember().getNickname();
 
