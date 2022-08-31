@@ -54,11 +54,12 @@ public class BoardApiController {
     /**
      * 게시글 상세 조회
      */
-    @GetMapping("api/boards/{grade}/{id}")
-    public DetailBoardResponse detailBoard(@PathVariable("grade") Grade grade, @PathVariable("id") Long id) {
+    @GetMapping("api/boards/{id}")
+    public DetailBoardResponse detailBoard(@PathVariable("id") Long id) {
         Board board = boardService.findOneBoard(id);
-        board.addHitTimes();
 
+        // 조회수 1 증가
+        board.addHitTimes();
 
         String memberNickname = board.getMember().getNickname();
 
@@ -72,12 +73,38 @@ public class BoardApiController {
                 board.getComments());
     }
 
+    /**
+     * 게시글 단 수 수정
+     */
+    @PostMapping("api/boards/{id}")
+    public DetailBoardResponse changeGradeOfBoard(@PathVariable("id") Long id, @RequestParam("grade") Grade changedGrade) {
+        Board board = boardService.findOneBoard(id);
+
+        board.changeGrade(changedGrade);
+
+        return new DetailBoardResponse(
+                board.getId(),
+                board.getMember().getNickname(),
+                board.getTitle(),
+                board.getContent(),
+                board.getHitTimes(),
+                board.getLikes(),
+                board.getComments());
+    }
+
+    /**
+     * 게시글 삭제
+     */
+
     @DeleteMapping("api/boards/{id}")
     public void deleteBoard(@PathVariable("id") Long id) {
         Board findBoard = boardService.findOneBoard(id);
 
         boardService.deleteBoard(findBoard);
     }
+
+
+
     /**
      * DTO
      */

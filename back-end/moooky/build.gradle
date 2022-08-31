@@ -31,6 +31,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//sql 문의 value 값들 확인
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
+
+	//mysql
+	implementation 'mysql:mysql-connector-java'
 }
 
 tasks.named('test') {

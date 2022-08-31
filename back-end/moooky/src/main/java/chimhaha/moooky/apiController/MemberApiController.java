@@ -7,12 +7,15 @@ import chimhaha.moooky.enums.Gender;
 import chimhaha.moooky.service.MemberServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class MemberApiController {
@@ -39,6 +42,24 @@ public class MemberApiController {
     }
 
     /**
+     * 로그인
+     */
+    @PostMapping("api/members/login")
+    public CreateMemberResponse logInMember(@RequestBody LoginMemberRequest request, BindingResult bindingResult) {
+        Member loginMember = memberService.loginMember(request.getEmail(), request.getPassword());
+        log.info("loginMember", loginMember);
+
+        if (loginMember == null) {
+            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
+            log.warn("로그인 정보 불일치");
+        }
+        // 로그인 성공 반환
+
+        return new CreateMemberResponse(loginMember.getId(), loginMember.getNickname(), loginMember.getAuthority());
+    }
+
+
+    /**
      * 회원 조회
      */
     @GetMapping("api/members/{id}")
@@ -59,7 +80,6 @@ public class MemberApiController {
     /**
      * 회원 수정
      */
-
     @PatchMapping("api/members/{id}")
     public void updateMember(@PathVariable("id") Long id, @RequestBody @Valid UpdateMemberRequest request) {
         Member findMember = memberService.findMemberById(id);
@@ -140,7 +160,7 @@ public class MemberApiController {
     }
 
     @Data
-    private class UpdateMemberRequest {
+    static class UpdateMemberRequest {
         private String password;
 
         private Profile profile;
@@ -148,5 +168,12 @@ public class MemberApiController {
         private LocalDate birthday;
 
         private Gender gender;
+    }
+
+    @Data
+    static class LoginMemberRequest {
+        private String email;
+
+        private String password;
     }
 }

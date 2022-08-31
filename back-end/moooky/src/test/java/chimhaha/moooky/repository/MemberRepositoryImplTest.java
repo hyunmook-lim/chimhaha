@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -50,14 +51,10 @@ public class MemberRepositoryImplTest {
         memberRepository.save(member2);
 
         //then
-        List<Member> sameMember = memberRepository.findByEmail("dfefsf@anve.com");
-        assertThat(sameMember.size()).isEqualTo(1);
+        Optional<Member> sameMember = memberRepository.findByEmail("dfefsf@anve.com");
+        assertThat(sameMember).isNotEmpty();
 
-        List<Member> sameNicknameMember = memberRepository.findByNickname("mook");
-        assertThat(sameNicknameMember.size()).isEqualTo(1);
-
-        List<Member> noSameMember = memberRepository.findByNickname("soo");
-        assertThat(noSameMember).isEmpty();
-
+        Optional<Member> sameNicknameMember = memberRepository.findByNickname("mook");
+        assertThat(sameNicknameMember).isNotEmpty();\
     }
 }

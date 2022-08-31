@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -34,9 +34,9 @@ public class MemberServiceImpl implements MemberService {
 
     private void validateDuplicateMember(Member member) {
 
-        List<Member> findSameEmailMember = memberRepository.findByEmail(member.getEmail());
+        Optional<Member> findSameEmailMember = memberRepository.findByEmail(member.getEmail());
 
-        List<Member> findSameNicknameMember = memberRepository.findByNickname(member.getNickname());
+        Optional<Member> findSameNicknameMember = memberRepository.findByNickname(member.getNickname());
         if (!findSameEmailMember.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 이메일입니다.");
         }
@@ -50,6 +50,15 @@ public class MemberServiceImpl implements MemberService {
     public void deleteMember(Member member) {
         memberRepository.delete(member);
     }
+
+    @Override
+    public Member loginMember(String email, String password) {
+        return memberRepository.findByEmail(email)
+                .filter(m -> m.getPassword().equals(password))
+                .orElse(null);
+    }
+
+
 //
 //    @Override
 //    public void chooseLikeOnBoard(Member member, Long boardId) {

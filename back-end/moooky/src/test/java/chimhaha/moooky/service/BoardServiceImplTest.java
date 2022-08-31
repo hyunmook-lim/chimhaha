@@ -17,8 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
@@ -35,7 +33,7 @@ public class BoardServiceImplTest {
     @Rollback(value = false)
     public void 게시글검색() {
         //given
-        Member mook = Member.createMember("mook", "1234", "dfjief@naverlcmo", null, null, Gender.FEMALE);
+        Member mook = Member.createMember("mook2", "1234", "dfjief@naverlcmo", null, null, Gender.FEMALE);
         memberRepository.save(mook);
 
         for(int i = 0; i < 1; i++) {

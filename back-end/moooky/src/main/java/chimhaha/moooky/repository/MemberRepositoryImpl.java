@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional(readOnly = true)
@@ -34,19 +35,17 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
-    public List<Member> findByEmail(String email) {
-        String query = "select m from Member m where m.email=:email";
-
-        List<Member> sameEmail = em.createQuery(query).setParameter("email", email).getResultList();
-
-        return sameEmail;
+    public Optional<Member> findByEmail(String email) {
+        return findAll().stream()
+                .filter(m -> m.getEmail().equals(email))
+                .findFirst();
     }
 
     @Override
-    public List<Member> findByNickname(String nickname) {
-        String query = "select m from Member m where m.nickname=:nickname";
-        List<Member> sameNickname = em.createQuery(query).setParameter("nickname", nickname).getResultList();
-        return sameNickname;
+    public Optional<Member> findByNickname(String nickname) {
+        return findAll().stream()
+                .filter(m -> m.getNickname().equals(nickname))
+                .findFirst();
     }
 
     @Override
