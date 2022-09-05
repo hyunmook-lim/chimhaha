@@ -4,8 +4,8 @@ import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.domain.Profile;
 import chimhaha.moooky.enums.Authority;
 import chimhaha.moooky.enums.Gender;
-import chimhaha.moooky.repository.ProfileRepositoryImpl;
 import chimhaha.moooky.service.MemberServiceImpl;
+import chimhaha.moooky.service.ProfileServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import java.time.LocalDate;
 public class MemberApiController {
 
     private final MemberServiceImpl memberService;
-    private final ProfileRepositoryImpl profileRepository;
+    private final ProfileServiceImpl profileService;
     private final FileSave fileSave;
 
 
@@ -46,7 +46,7 @@ public class MemberApiController {
         profile.setMember(member);
 
         memberService.signIn(member);
-        profileRepository.save(profile);
+        profileService.saveProfile(profile);
 
         log.info("member ={}", member);
         log.info("profile = {}", profile);

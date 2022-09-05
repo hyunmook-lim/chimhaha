@@ -20,6 +20,10 @@ public class Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    // 좋아요 표시를 한 member 목록
+    @OneToMany(mappedBy = "board")
+    private List<LikeBoards> likeBoards = new ArrayList<>();
+
     private LocalDateTime postedDate;
 
     @Enumerated(EnumType.STRING)
@@ -58,6 +62,7 @@ public class Board {
         board.grade = Grade.UNGRADED;
         board.hitTimes = 0;
         board.likes = 0;
+        board.likeBoards = new ArrayList<>();
         board.comments = new ArrayList<>();
 
         board.postedDate = LocalDateTime.now();  //작성 시간을 현재로 설정
