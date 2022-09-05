@@ -4,15 +4,18 @@ import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.domain.Profile;
 import chimhaha.moooky.enums.Authority;
 import chimhaha.moooky.enums.Gender;
+import chimhaha.moooky.repository.ProfileRepositoryImpl;
 import chimhaha.moooky.service.MemberServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import java.io.IOException;
 import java.time.LocalDate;
 
 @Slf4j
@@ -21,22 +24,32 @@ import java.time.LocalDate;
 public class MemberApiController {
 
     private final MemberServiceImpl memberService;
+    private final ProfileRepositoryImpl profileRepository;
+    private final FileSave fileSave;
+
 
     /**
      * 회원 가입
      */
     @PostMapping("api/members")
-    public CreateMemberResponse joinMember(@RequestBody @Valid CreateMemberRequest request) {
+    public CreateMemberResponse joinMember(CreateMemberRequest createMemberRequest) throws IOException {
 
-        Member member = Member.createMember(
-                                request.getNickname(),
-                                request.getPassword(),
-                                request.getEmail(),
-                                null,
-                                request.getBirthday(),
-                                request.getGender());
+        Profile profile = fileSave.saveProfile(createMemberRequest.getProfile());
+
+        Member member = Member.createMember(createMemberRequest.getNickname(),
+                createMemberRequest.getPassword(),
+                createMemberRequest.getEmail(),
+                profile,
+                createMemberRequest.getBirthday(),
+                createMemberRequest.getGender());
+
+        profile.setMember(member);
 
         memberService.signIn(member);
+        profileRepository.save(profile);
+
+        log.info("member ={}", member);
+        log.info("profile = {}", profile);
 
         return new CreateMemberResponse(member.getId(), member.getNickname(), member.getAuthority());
     }
@@ -72,8 +85,8 @@ public class MemberApiController {
                 findMember.getNickname(),
                 findMember.getEmail(),
                 findMember.getProfile(),
-                findMember.getBirthday(),
-                findMember.getGender(),
+                null,
+                null,
                 findMember.getAuthority());
     }
 
@@ -106,15 +119,17 @@ public class MemberApiController {
         @NotEmpty
         private String nickname;
 
+        @NotEmpty
         private String password;
 
+        @NotEmpty
         private String email;
-
-        private Profile profile;
 
         private LocalDate birthday;
 
         private Gender gender;
+
+        private MultipartFile profile;
     }
 
     @Data

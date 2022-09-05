@@ -49,6 +49,7 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
+    @Transactional
     public void delete(Member member) {
         em.remove(member);
     }

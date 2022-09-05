@@ -14,6 +14,7 @@ public class ProfileServiceImpl implements ProfileService {
     private final ProfileRepositoryImpl profileRepository;
 
     @Override
+    @Transactional
     public void saveProfile(Profile profile) {
         profileRepository.save(profile);
     }
@@ -25,6 +26,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    @Transactional
     public void deleteProfile(Profile profile) {
         profileRepository.delete(profile);
     }

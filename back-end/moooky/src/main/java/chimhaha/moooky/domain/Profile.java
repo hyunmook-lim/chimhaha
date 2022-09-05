@@ -16,6 +16,8 @@ public class Profile {
 
     private String photoPath;
 
+    private String storeFileName;
+
     //== 연관 관계 메서드 ==//
     public void setMember(Member member) {
         this.member = member;
@@ -25,20 +27,20 @@ public class Profile {
     /**
      * 생성
      */
-    public static Profile createProfile(Member member, String photoPath) {
+    public static Profile createProfile(String photoPath, String storeFileName) {
         Profile profile = new Profile();
 
-        profile.member = member;
         profile.photoPath = photoPath;
-
+        profile.storeFileName = storeFileName;
         return profile;
     }
 
     /**
      * 변경
      */
-    public Long changeProfile(String photoPath) {
+    public Long changeProfile(String photoPath, String storeFileName) {
         this.photoPath = photoPath;
+        this.storeFileName = storeFileName;
         return this.id;
     }
 }

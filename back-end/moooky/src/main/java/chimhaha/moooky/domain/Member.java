@@ -28,8 +28,8 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 
-    //좋아요 표시한 게시글들의 id
-//    private List<Long> likeBoardIds = new ArrayList<>();
+//    좋아요 표시한 게시글들의 id
+    private List<Long> likeBoardIds = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();

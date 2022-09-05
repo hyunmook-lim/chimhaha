@@ -7,17 +7,28 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
         format_sql: true
-
+  # make color in console
   output:
     ansi:
       enabled: always
 
-logging.level:
-  org.hibernate.SQL: debug
+  # file upload system
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+      apache:
+        coyote:
+          http11: debug
 
 #  org.hibernate.type: trace
+
+file:
+  dir: /Users/hyunmooklim/Desktop/imageFiles/
