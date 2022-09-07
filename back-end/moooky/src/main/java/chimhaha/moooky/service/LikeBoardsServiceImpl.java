@@ -1,6 +1,7 @@
 package chimhaha.moooky.service;
 
 import chimhaha.moooky.domain.LikeBoards;
+import chimhaha.moooky.repository.BoardRepositoryImpl;
 import chimhaha.moooky.repository.LikeBoardsRepositoryImpl;
 import chimhaha.moooky.service.interfaces.LikeBoardsService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LikeBoardsServiceImpl implements LikeBoardsService {
     private final LikeBoardsRepositoryImpl likeBoardsRepository;
+    private final BoardRepositoryImpl boardRepository;
 
     @Override
     @Transactional
@@ -25,9 +27,11 @@ public class LikeBoardsServiceImpl implements LikeBoardsService {
     }
 
     @Override
-    public List<LikeBoards> findLikeBoards(Long memberId, Long boardId) {
-        List<LikeBoards> findLikeBoards = likeBoardsRepository.findByMemberAndBoard(memberId, boardId);
-
+    public List<LikeBoards> findLikeBoards(Long memberId) {
+        log.info("here is likeBoardsService");
+        log.info("memberId = {}", memberId);
+        List<LikeBoards> findLikeBoards = likeBoardsRepository.findByMember(memberId);
+        log.info("likeBoard = {}", findLikeBoards);
         return findLikeBoards;
     }
 

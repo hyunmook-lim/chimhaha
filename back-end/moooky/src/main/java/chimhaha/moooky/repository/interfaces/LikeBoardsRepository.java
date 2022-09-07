@@ -7,7 +7,7 @@ import java.util.List;
 public interface LikeBoardsRepository {
     void save(LikeBoards likeBoards);
 
-    List<LikeBoards> findByMemberAndBoard(Long memberId, Long boardId);
+    List<LikeBoards> findByMember(Long memberId);
 
     void delete(LikeBoards likeBoards);
 }

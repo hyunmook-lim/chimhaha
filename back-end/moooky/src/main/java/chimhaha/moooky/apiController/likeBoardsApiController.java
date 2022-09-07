@@ -2,8 +2,10 @@ package chimhaha.moooky.apiController;
 
 import chimhaha.moooky.domain.Board;
 import chimhaha.moooky.domain.LikeBoards;
+import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.service.BoardServiceImpl;
 import chimhaha.moooky.service.LikeBoardsServiceImpl;
+import chimhaha.moooky.service.MemberServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -20,22 +23,28 @@ import java.util.List;
 public class likeBoardsApiController {
     private final LikeBoardsServiceImpl likeBoardsService;
     private final BoardServiceImpl boardService;
+    private final MemberServiceImpl memberService;
 
     @PostMapping("api/likeBoards")
     public void clickLikeButton(@RequestBody likeBoardsRequest request) {
         log.info("here is clickLikeButton");
         Long memberId = request.getMemberId();
         Long boardId = request.getBoardId();
+        log.info("boardId = {}", boardId);
         Board findBoard = boardService.findOneBoard(boardId);
+        log.info("controller board = {}", findBoard);
 
-        List<LikeBoards> likeBoards = likeBoardsService.findLikeBoards(memberId, boardId);
+        List<LikeBoards> likeBoardsOfMember = likeBoardsService.findLikeBoards(memberId);
 
+        Optional<LikeBoards> likeBoards = likeBoardsOfMember.stream().filter(b -> b.getBoard().equals(findBoard)).findFirst();
         if (likeBoards.isEmpty()) {
             findBoard.addLikes();
-            likeBoardsService.saveLikeBoards(likeBoards.get(0));
+            Member findMember = memberService.findMemberById(memberId);
+            LikeBoards newLikeBoards = LikeBoards.createLikeBoards(findMember, findBoard);
+            likeBoardsService.saveLikeBoards(newLikeBoards);
         } else {
             findBoard.cancelLikes();
-            likeBoardsService.deleteLikeBoards(likeBoards.get(0));
+            likeBoardsService.deleteLikeBoards(likeBoards.get());
         }
     }
 

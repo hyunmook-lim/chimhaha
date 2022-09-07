@@ -5,11 +5,13 @@ import chimhaha.moooky.domain.Board;
 import chimhaha.moooky.enums.Grade;
 import chimhaha.moooky.repository.interfaces.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class BoardRepositoryImpl implements BoardRepository {
@@ -23,7 +25,10 @@ public class BoardRepositoryImpl implements BoardRepository {
 
     @Override
     public Board findById(Long boardId) {
-        return em.find(Board.class, boardId);
+        log.info("boardId = {}", boardId);
+        Board board = em.find(Board.class, boardId);
+        log.info("repository board = {}", board);
+        return board;
     }
 
     @Override

@@ -1,7 +1,5 @@
 package chimhaha.moooky.service;
 
-import chimhaha.moooky.domain.Board;
-import chimhaha.moooky.domain.LikeBoards;
 import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.repository.BoardRepositoryImpl;
 import chimhaha.moooky.repository.LikeBoardsRepositoryImpl;
@@ -12,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -64,25 +61,5 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findByEmail(email)
                 .filter(m -> m.getPassword().equals(password))
                 .orElse(null);
-    }
-
-
-
-    @Override
-    public void clickLikeOnBoard(Long memberId, Long boardId) {
-        Member findMember = memberRepository.findById(memberId);
-        Board findBoard = boardRepository.findById(boardId);
-        List<LikeBoards> findLikeBoards = likeBoardsRepository.findByMemberAndBoard(memberId, boardId);
-
-        if (findLikeBoards.isEmpty()) {
-            findBoard.addLikes();
-            LikeBoards newLikeBoards = LikeBoards.createLikeBoards(findMember, findBoard);
-            likeBoardsRepository.save(newLikeBoards);
-        } else {
-            findBoard.cancelLikes();
-            likeBoardsRepository.delete(findLikeBoards.get(0));
-        }
-
-
     }
 }
