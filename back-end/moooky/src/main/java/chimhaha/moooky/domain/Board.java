@@ -1,6 +1,8 @@
 package chimhaha.moooky.domain;
 
 import chimhaha.moooky.enums.Grade;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -16,11 +18,13 @@ public class Board {
     @Column(name = "BOARD_ID")
     private Long id;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     // 좋아요 표시를 한 member 목록
+    @JsonManagedReference
     @OneToMany(mappedBy = "board")
     private List<LikeBoards> likeBoards = new ArrayList<>();
 
@@ -37,6 +41,7 @@ public class Board {
 
     private Integer likes;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "board")
     private List<Comment> comments = new ArrayList<>();
 

@@ -19,8 +19,11 @@ public class CommentServiceImpl implements CommentService {
     private final MemberRepositoryImpl memberRepository;
     private final BoardRepositoryImpl boardRepository;
 
+
     @Override
+    @Transactional
     public Long saveComment(Long memberId, Long boardId, String content) {
+
         Member findMember = memberRepository.findById(memberId);
         Board findBoard = boardRepository.findById(boardId);
 
@@ -37,6 +40,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public void deleteComment(Comment comment) {
         commentRepository.delete(comment);
     }

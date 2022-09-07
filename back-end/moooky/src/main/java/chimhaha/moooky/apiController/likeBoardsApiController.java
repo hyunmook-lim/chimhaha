@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
@@ -23,7 +22,8 @@ public class likeBoardsApiController {
     private final BoardServiceImpl boardService;
 
     @PostMapping("api/likeBoards")
-    public void clickLikeButton(@RequestBody @Valid likeBoardsRequest request) {
+    public void clickLikeButton(@RequestBody likeBoardsRequest request) {
+        log.info("here is clickLikeButton");
         Long memberId = request.getMemberId();
         Long boardId = request.getBoardId();
         Board findBoard = boardService.findOneBoard(boardId);
@@ -40,7 +40,7 @@ public class likeBoardsApiController {
     }
 
     @Data
-    private class likeBoardsRequest {
+    static class likeBoardsRequest {
         @NotEmpty
         private Long memberId;
 

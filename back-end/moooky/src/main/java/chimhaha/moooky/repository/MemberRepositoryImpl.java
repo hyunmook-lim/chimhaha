@@ -3,6 +3,7 @@ package chimhaha.moooky.repository;
 import chimhaha.moooky.domain.Member;
 import chimhaha.moooky.repository.interfaces.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Repository
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -36,9 +38,13 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public Optional<Member> findByEmail(String email) {
-        return findAll().stream()
-                .filter(m -> m.getEmail().equals(email))
-                .findFirst();
+        log.info("here is findByEmail");
+        log.info("email = {}", email);
+        String query = "select m from Member m where m.email=:email";
+
+        List<Member> sameEmailMember = em.createQuery(query).setParameter("email", email).getResultList();
+        log.info("sameEmailMember = {}", sameEmailMember);
+        return sameEmailMember.stream().findFirst();
     }
 
     @Override

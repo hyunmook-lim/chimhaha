@@ -59,6 +59,7 @@ public class MemberApiController {
      */
     @PostMapping("api/members/login")
     public CreateMemberResponse logInMember(@RequestBody LoginMemberRequest request, BindingResult bindingResult) {
+        log.warn("here");
         Member loginMember = memberService.loginMember(request.getEmail(), request.getPassword());
         log.info("loginMember", loginMember);
 
@@ -75,6 +76,8 @@ public class MemberApiController {
     /**
      * 회원 조회
      */
+    // profile download에 관한 설정이 필요함
+
     @GetMapping("api/members/{id}")
     public FindMemberResponse findMember(@PathVariable("id") Long id) {
         Member findMember = memberService.findMemberById(id);
@@ -103,6 +106,7 @@ public class MemberApiController {
     /**
      * 회원 삭제
      */
+    // foreign key에 대한 설정이 필요함(삭제시 게시글도 삭제)
     @DeleteMapping("api/members/{id}")
     public void deleteMember(@PathVariable("id") Long id) {
         Member findMember = memberService.findMemberById(id);

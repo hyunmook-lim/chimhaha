@@ -26,7 +26,7 @@ public class FileSave {
         String originalFilename = multipartFile.getOriginalFilename();
         String storeFileName = createStoreFile(originalFilename);
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
-        String photoPath = originalFilename + fileDir;
+        String photoPath = fileDir + originalFilename;
         return Profile.createProfile(photoPath, storeFileName);
     }
 

@@ -1,4 +1,5 @@
 package chimhaha.moooky.domain;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ public class Profile {
     @Column(name = "PROFILE_ID")
     private Long id;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "profile", fetch = FetchType.LAZY)
     private Member member;
 

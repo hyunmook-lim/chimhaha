@@ -5,11 +5,13 @@ import chimhaha.moooky.enums.Grade;
 import chimhaha.moooky.repository.BoardRepositoryImpl;
 import chimhaha.moooky.service.interfaces.BoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -24,6 +26,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board findOneBoard(Long boardId) {
+        log.info("here is findOneBoard");
         return boardRepository.findById(boardId);
     }
 

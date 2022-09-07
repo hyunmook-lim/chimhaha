@@ -2,6 +2,7 @@ package chimhaha.moooky.domain;
 
 import chimhaha.moooky.enums.Authority;
 import chimhaha.moooky.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -25,16 +26,20 @@ public class Member {
     @Column(unique = true)
     private String email;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 
 //    좋아요 표시한 게시글들의 id
+    @JsonManagedReference
     @OneToMany(mappedBy = "member")
     private List<LikeBoards> likeBoards = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "PROFILE_ID")
     private Profile profile;

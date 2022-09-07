@@ -9,6 +9,7 @@ import chimhaha.moooky.service.MemberServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -54,7 +55,8 @@ public class BoardApiController {
     /**
      * 게시글 상세 조회
      */
-    @GetMapping("api/boards/{id}")
+    @Transactional
+    @GetMapping("api/boards/{Grade}/{id}")
     public DetailBoardResponse detailBoard(@PathVariable("id") Long id) {
         Board board = boardService.findOneBoard(id);
 
@@ -76,8 +78,9 @@ public class BoardApiController {
     /**
      * 게시글 단 수 수정
      */
-    @PostMapping("api/boards/{id}")
-    public DetailBoardResponse changeGradeOfBoard(@PathVariable("id") Long id, @RequestParam("grade") Grade changedGrade) {
+    @Transactional
+    @PostMapping("api/boards/{Grade}/{id}/{ChangedGrade}")
+    public DetailBoardResponse changeGradeOfBoard(@PathVariable("id") Long id, @PathVariable("ChangedGrade") Grade changedGrade) {
         Board board = boardService.findOneBoard(id);
 
         board.changeGrade(changedGrade);
@@ -95,8 +98,7 @@ public class BoardApiController {
     /**
      * 게시글 삭제
      */
-
-    @DeleteMapping("api/boards/{id}")
+    @DeleteMapping("api/boards/{Grade}/{id}")
     public void deleteBoard(@PathVariable("id") Long id) {
         Board findBoard = boardService.findOneBoard(id);
 
@@ -110,16 +112,16 @@ public class BoardApiController {
      */
 
     @Data
-    private class CreateBoardRequest {
-        Long memberId;
+    static class CreateBoardRequest {
+        private Long memberId;
 
-        String title;
+        private String title;
 
-        String content;
+        private String content;
     }
     @Data
-    private class CreateBoardResponse {
-        Long boardId;
+    static class CreateBoardResponse {
+        private Long boardId;
 
         public CreateBoardResponse(Long boardId) {
             this.boardId = boardId;
@@ -130,7 +132,7 @@ public class BoardApiController {
      * 게시글 리스트 조회
      */
     @Data
-    private class FindBoardsResponse {
+    static class FindBoardsResponse {
         private String memberNickname;
 
         private String title;
@@ -155,7 +157,7 @@ public class BoardApiController {
 
 
     @Data
-    private class DetailBoardResponse {
+    static class DetailBoardResponse {
         Long boardId;
 
         String memberNickname;

@@ -16,24 +16,24 @@ import javax.validation.constraints.NotEmpty;
 public class CommentApiController {
     private final CommentServiceImpl commentService;
 
-    @PostMapping("api/comment")
-    public void saveComment(@RequestBody @Valid saveCommentRequest request) {
+    @PostMapping("api/comments")
+    public void saveComment(@RequestBody saveCommentRequest request) {
         commentService.saveComment(request.getMemberId(), request.getBoardId(), request.getContent());
     }
-    @PostMapping("api/comment/{id}")
+    @PostMapping("api/comments/{id}")
     public void updateComment(@PathVariable("id") Long commentId, @RequestBody @Valid String content) {
         Comment findComment = commentService.findByCommentId(commentId);
         findComment.changeCommentData(content);
     }
 
-    @DeleteMapping("api/comment/{id}")
+    @DeleteMapping("api/comments/{id}")
     public void deleteComment(@PathVariable("id") Long commentId) {
         Comment findComment = commentService.findByCommentId(commentId);
         commentService.deleteComment(findComment);
     }
 
     @Data
-    private class saveCommentRequest {
+    static class saveCommentRequest {
         @NotEmpty
         private Long boardId;
 
@@ -43,4 +43,5 @@ public class CommentApiController {
         @NotEmpty
         private String content;
     }
+
 }
