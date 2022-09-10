@@ -26,7 +26,7 @@ public class CommentApiController {
         findComment.changeCommentData(content);
     }
 
-    @DeleteMapping("api/comments/{id}")
+    @DeleteMapping("api/comments/{ㅡ}")
     public void deleteComment(@PathVariable("id") Long commentId) {
         Comment findComment = commentService.findByCommentId(commentId);
         commentService.deleteComment(findComment);

@@ -25,7 +25,7 @@ public class Board {
 
     // 좋아요 표시를 한 member 목록
     @JsonManagedReference
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board", orphanRemoval = true)
     private List<LikeBoards> likeBoards = new ArrayList<>();
 
     private LocalDateTime postedDate;
@@ -42,7 +42,7 @@ public class Board {
     private Integer likes;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board", orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 
     //== 연관 관계 메서드 ==//
