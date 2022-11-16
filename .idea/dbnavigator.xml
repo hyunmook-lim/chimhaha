@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="568f1697-d377-4ce1-92ff-e10013ab97e8">
-      <console name="database" type="STANDARD" schema="chimhaha_backend_database" session="Main" />
+      <console name="database" type="STANDARD" schema="chimhaha_backend_database" session="Main"><![CDATA[use chimhaha_backend_database;]]></console>
       <console name="database 1" type="STANDARD" schema="chimhaha_backend_database" session="Main"><![CDATA[select @@time_zone, now();]]></console>
     </connection>
   </component>

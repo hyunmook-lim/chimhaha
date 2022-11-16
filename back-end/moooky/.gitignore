@@ -5,7 +5,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 ###로그인 정보를 보호하기 위한 gitignore###
-application-oauth.yml
+application.yml
 
 ### STS ###
 .apt_generated
