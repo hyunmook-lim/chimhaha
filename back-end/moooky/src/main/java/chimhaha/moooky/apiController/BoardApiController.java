@@ -109,6 +109,17 @@ public class BoardApiController {
         boardService.deleteBoard(findBoard);
     }
 
+    /**
+     * 이미지 저장
+     */
+//    @PostMapping(value = "api/image/upload")
+//    public ModelAndView image(MultipartHttpServletRequest request) throws Exception {
+//        ModelAndView mav = new ModelAndView("upload");
+//
+//        return
+//    }
+
+
 
 
     /**

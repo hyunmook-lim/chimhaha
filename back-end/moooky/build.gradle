@@ -16,6 +16,9 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven {
+		url = 'https://maven.cksource.com/'
+	}
 }
 
 dependencies {
@@ -30,10 +33,19 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//sql 문의 value 값들 확인
-	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1'
 
 	//mysql
 	implementation 'mysql:mysql-connector-java'
+
+	// 파일처리를 위한 라이브러리
+	// https://mavenlibs.com/maven/dependency/commons-fileupload/commons-fileupload
+	implementation 'commons-fileupload:commons-fileupload:1.4'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+	//ckfinder dependencies
+	compileOnly 'com.cksource:ckfinder3:3.5.1.1'
 }
 
 tasks.named('test') {
