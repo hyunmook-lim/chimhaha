@@ -1,4 +1,4 @@
-const theme = {
+const theme: any = {
   color: {
     background: "rgb(256,256,256)",
     background_header: "rgb(256,256,256)",
