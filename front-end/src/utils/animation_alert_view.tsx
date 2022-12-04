@@ -33,8 +33,8 @@ const AlertViewText = styled.div`
 
 // 상단에 로그인시 내려오는 알람
 interface AlertType {
-    alertContent: string,
-    isShow: boolean
+    alertContent: string | boolean,
+    isShow: string | boolean
 }
 /**
  *

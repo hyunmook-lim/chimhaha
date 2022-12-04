@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useWindowDimensions from "../utils/getWindowDimensions";
 import { Link } from "react-router-dom";
 import { LoginAction } from "../redux/actions/login_action";
-import {AnimationAlertView} from './'
+import AnimationAlertView from "../utils/animation_alert_view";
 
 const ViewContainer = styled.div`
   display: flex;
@@ -99,10 +99,6 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
     return { login_info: state.login_info };
   });
 
-  //click menubar logout button event
-    function clickLogoutButtonEvent() {
-        AnimationAlertView(alertContent: 'hihi', isShow: true)
-    }
 
   return (
     <ViewContainer>
@@ -196,7 +192,6 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
               style={{ marginLeft: 12 }}
               onClick={() => {
                 dispatch(LoginAction({ logined: false }));
-
               }}
             >
               로그아웃
@@ -208,6 +203,7 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
           </LoginButtonContainer>
         )}
       </View>
+
     </ViewContainer>
   );
 }
