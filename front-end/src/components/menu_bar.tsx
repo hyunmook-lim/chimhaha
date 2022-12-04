@@ -7,14 +7,15 @@ import { useSelector, useDispatch } from "react-redux";
 import useWindowDimensions from "../utils/getWindowDimensions";
 import { Link } from "react-router-dom";
 import { LoginAction } from "../redux/actions/login_action";
+import {AnimationAlertView} from './'
 
 const ViewContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   background-color: ${({ theme }) => theme.color.background_menubar};
 `;
 
@@ -32,7 +33,7 @@ const Container = styled.div`
   display: flex;
   justify-content: start;
   align-items: end;
-  padding: 0px 0px;
+  padding: 0 0;
 `;
 
 const MenuButton = styled.div`
@@ -97,6 +98,11 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
   const { login_info } = useSelector((state: any) => {
     return { login_info: state.login_info };
   });
+
+  //click menubar logout button event
+    function clickLogoutButtonEvent() {
+        AnimationAlertView(alertContent: 'hihi', isShow: true)
+    }
 
   return (
     <ViewContainer>
@@ -186,10 +192,11 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
               내정보
             </LoginButton>
             <LoginButton
-              to="#"
+              to="/"
               style={{ marginLeft: 12 }}
               onClick={() => {
                 dispatch(LoginAction({ logined: false }));
+
               }}
             >
               로그아웃

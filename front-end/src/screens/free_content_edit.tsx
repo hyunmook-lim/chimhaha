@@ -91,6 +91,7 @@ export default function FreeContentEdit() {
               console.log("Editor is ready to use!");
             }}
             onChange={(event: any, editor: any) => {
+              // Data type 우선은 any type으로 다 설정해두음
               const data = editor.getData();
               setContent(data);
             }}

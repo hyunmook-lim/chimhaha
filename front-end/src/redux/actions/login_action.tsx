@@ -1,4 +1,15 @@
-export const LoginAction = (data: any) => ({
+interface DataType {
+  type?: string,
+  logined?: boolean,
+  email?: string,
+  password?: string,
+  name?: string,
+  nickname?: string,
+  gender?: string,
+  birthday?: any
+}
+
+export const LoginAction = (data: DataType) => ({
   type: "LOGINACTION",
   logined: data.logined,
   email: data.email,

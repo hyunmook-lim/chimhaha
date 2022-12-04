@@ -75,7 +75,7 @@ const LoginSignupContainer = styled.div`
 
 export default function Login_Test() {
   const dispatch = useDispatch();
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState<boolean>(true);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -88,7 +88,7 @@ export default function Login_Test() {
         password: "password",
         name: "yook",
         nickname: "yoooook",
-        sex: "male",
+        gender: "male",
         birthday: "960221",
       })
     );
