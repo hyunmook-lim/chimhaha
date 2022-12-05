@@ -1,5 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { ThemeProvider } from "styled-components";
+import styled from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {ErrMessageAction} from './redux/actions/err_message_action'
 import {
   Home,
   Login,
@@ -13,17 +17,33 @@ import {
   FreeContentEdit,
 } from "./screens";
 import theme from "./data/theme";
-import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {AnimationAlertView} from './components';
+
 
 const View = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100vw;
   align-items: center;
 `;
 
-
 export default function App() {
+  const [errMessage, setErrMessage] = useState<string| boolean>(false)
+
+  const dispatch = useDispatch()
+
+  const err_message = useSelector((state: any) => {
+    return state.err_message
+  })
+
+  useEffect(()=>{
+    setErrMessage(err_message)
+    setTimeout(()=>{
+      dispatch(ErrMessageAction(false))
+    },3000)
+  },[err_message])
+
+
   return (
       <View>
         <ThemeProvider theme={theme}>
@@ -63,6 +83,7 @@ export default function App() {
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
+        <AnimationAlertView alertContent={errMessage} isErrMessageShow={errMessage} />
       </View>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useWindowDimensions from "../utils/getWindowDimensions";
 import { Link } from "react-router-dom";
 import { LoginAction } from "../redux/actions/login_action";
-import AnimationAlertView from "../utils/animation_alert_view";
+import {ErrMessageAction} from "../redux/actions/err_message_action";
 
 const ViewContainer = styled.div`
   display: flex;
@@ -26,6 +26,10 @@ const View = styled.div`
   justify-content: start;
   align-self: start;
   width: ${({ theme }) => theme.size.screen_width}px;
+  
+  @media (max-width: ${({theme}) => theme.size.screen_width}px) {
+    width: 90%;
+  }
 `;
 
 const Container = styled.div`
@@ -84,6 +88,7 @@ const LoginButton = styled(Link)`
   font-weight: 700;
   font-size: ${({ theme }) => theme.size.normal_text}px;
   color: ${({ theme }) => theme.color.normal_text};
+  min-width: 40px;
 `;
 
 interface MenuBarType {
@@ -98,6 +103,11 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
   const { login_info } = useSelector((state: any) => {
     return { login_info: state.login_info };
   });
+
+  function clickLogoutButton() {
+      dispatch(LoginAction({ logined: false }));
+      dispatch(ErrMessageAction('로그아웃되었습니다.'))
+  }
 
 
   return (
@@ -190,9 +200,7 @@ export default function MenuBar({ home, pokso, free }: MenuBarType) {
             <LoginButton
               to="/"
               style={{ marginLeft: 12 }}
-              onClick={() => {
-                dispatch(LoginAction({ logined: false }));
-              }}
+              onClick={clickLogoutButton}
             >
               로그아웃
             </LoginButton>
