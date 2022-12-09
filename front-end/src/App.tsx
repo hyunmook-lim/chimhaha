@@ -39,7 +39,7 @@ export default function App() {
   useEffect(() => {
     setErrMessage(err_message)
     setTimeout(() => {
-      dispatch(ErrMessageAction(false))
+      dispatch(ErrMessageAction(false)),
     }, 3000)
   }, [err_message])
 
