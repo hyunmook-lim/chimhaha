@@ -30,6 +30,7 @@ const TitleContainer = styled.div`
   margin-bottom: 20px;
 `;
 
+
 const SaveButtonContainer = styled.a`
   display: flex;
   flex-direction: column;
@@ -44,6 +45,7 @@ const SaveButtonContainer = styled.a`
   margin: 20px 0;
 `;
 
+
 const SaveButton = styled.div`
   font-size: ${({ theme }) => theme.size.normal_text}px;
   text-align: center;
@@ -51,9 +53,10 @@ const SaveButton = styled.div`
 `;
 
 export default function FreeContentEdit() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
   const navigate = useNavigate();
+
 
   function _clickSaveButton() {
     navigate("/free-board");
@@ -66,7 +69,7 @@ export default function FreeContentEdit() {
   return (
     <View>
       <Header />
-      <MenuBar free={true}/>
+      <MenuBar free={true} />
       <PoksoBody>
         <ContentContainer>
           <TitleContainer>
@@ -95,7 +98,7 @@ export default function FreeContentEdit() {
               const data = editor.getData();
               setContent(data);
             }}
-            onBlur={(event:any, editor:any) => {
+            onBlur={(event: any, editor: any) => {
               console.log("Blur");
             }}
             onFocus={(event: any, editor: any) => {

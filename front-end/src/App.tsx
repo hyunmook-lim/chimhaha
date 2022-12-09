@@ -27,7 +27,6 @@ const View = styled.div`
   align-items: center;
 `;
 
-
 export default function App() {
   const [errMessage, setErrMessage] = useState<string | boolean>(false)
 
